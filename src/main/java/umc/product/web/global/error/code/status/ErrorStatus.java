@@ -1,10 +1,10 @@
-package umc.product.web.global.error.common.status;
+package umc.product.web.global.error.code.status;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
-import umc.product.web.global.error.common.BaseErrorCode;
-import umc.product.web.global.error.common.ErrorReasonDTO;
+import umc.product.web.global.error.code.BaseErrorCode;
+import umc.product.web.global.error.code.ErrorReasonDTO;
 
 @Getter
 @AllArgsConstructor

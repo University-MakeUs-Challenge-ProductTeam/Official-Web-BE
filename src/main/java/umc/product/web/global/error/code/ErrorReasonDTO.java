@@ -1,4 +1,4 @@
-package umc.product.web.global.error.common;
+package umc.product.web.global.error.code;
 
 import lombok.Builder;
 import lombok.Getter;
