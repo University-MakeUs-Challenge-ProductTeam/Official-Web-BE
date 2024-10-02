@@ -2,7 +2,7 @@ package umc.product.web.domain.project.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import umc.product.web.domain.project.entity.enums.Platform;
+import umc.product.web.domain.project.entity.enums.PlatformName;
 import umc.product.web.global.common.BaseEntity;
 
 import java.time.LocalDate;
@@ -30,9 +30,6 @@ public class Project extends BaseEntity {
 
     @Column(name = "is_released", nullable = false)
     private Boolean isReleased;
-
-    @Enumerated(EnumType.STRING)
-    private Platform platform;
 
     @Column(name = "description", length = 3000)
     private String description;
