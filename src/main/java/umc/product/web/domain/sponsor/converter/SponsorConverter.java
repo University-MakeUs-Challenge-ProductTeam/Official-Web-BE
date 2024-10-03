@@ -2,6 +2,7 @@ package umc.product.web.domain.sponsor.converter;
 
 import umc.product.web.domain.sponsor.dto.SponsorRequestDTO;
 import umc.product.web.domain.sponsor.dto.SponsorResponseDTO;
+import umc.product.web.domain.sponsor.entity.RequestSponsor;
 import umc.product.web.domain.sponsor.entity.Sponsor;
 
 import java.util.List;
@@ -42,6 +43,26 @@ public class SponsorConverter {
                 .sponsorId(sponsor.getId())
                 .createdAt(sponsor.getCreatedAt())
                 .updatedAt(sponsor.getUpdatedAt())
+                .build();
+    }
+
+    public static RequestSponsor toSponsorByRequest(SponsorRequestDTO.CreateRequestSponsorDTO createRequestSponsorDTO) {
+        return RequestSponsor.builder()
+                .email(createRequestSponsorDTO.getEmail())
+                .link(createRequestSponsorDTO.getLink())
+                .contactInfo(createRequestSponsorDTO.getContactInfo())
+                .applicationName(createRequestSponsorDTO.getApplicationName())
+                .description(createRequestSponsorDTO.getDescription())
+                .organizationName(createRequestSponsorDTO.getOrganizationName())
+                .logoImage(createRequestSponsorDTO.getLogoImage())
+                .build();
+    }
+
+    public static SponsorResponseDTO.CreateRequestSponsorResultDTO toCreateRequestSponsorResultDTO(RequestSponsor requestSponsor) {
+        return SponsorResponseDTO.CreateRequestSponsorResultDTO.builder()
+                .requestSponsorId(requestSponsor.getId())
+                .createdAt(requestSponsor.getCreatedAt())
+                .updatedAt(requestSponsor.getUpdatedAt())
                 .build();
     }
 }

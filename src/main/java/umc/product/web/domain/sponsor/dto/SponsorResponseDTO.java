@@ -41,4 +41,14 @@ public class SponsorResponseDTO {
         private LocalDateTime updatedAt;
     }
 
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class CreateRequestSponsorResultDTO {
+        private Long requestSponsorId;
+        private LocalDateTime createdAt;
+        private LocalDateTime updatedAt;
+    }
+
 }

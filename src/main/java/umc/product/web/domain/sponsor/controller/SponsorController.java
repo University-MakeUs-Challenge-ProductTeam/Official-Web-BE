@@ -33,4 +33,10 @@ public class SponsorController {
         SponsorResponseDTO.CreateSponsorResultDTO createSponsorResultDTO = sponsorCommandService.createSponsor(createSponsorDTO);
         return BaseResponse.onSuccess(createSponsorResultDTO);
     }
+
+    @PostMapping("/request")
+    public BaseResponse<SponsorResponseDTO.CreateRequestSponsorResultDTO> requestSponsor(@RequestBody SponsorRequestDTO.CreateRequestSponsorDTO createRequestSponsorDTO) {
+        SponsorResponseDTO.CreateRequestSponsorResultDTO createRequestSponsorResultDTO = sponsorCommandService.requestSponsor(createRequestSponsorDTO);
+        return BaseResponse.onSuccess(createRequestSponsorResultDTO);
+    }
 }
