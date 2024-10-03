@@ -11,4 +11,8 @@ public class SponsorCommandServiceImpl implements SponsorCommandService {
 
     private final SponsorRepository sponsorRepository;
 
+    @Override
+    public void deleteSponsor(Long sponsorId) {
+        sponsorRepository.deleteById(sponsorId);
+    }
 }
