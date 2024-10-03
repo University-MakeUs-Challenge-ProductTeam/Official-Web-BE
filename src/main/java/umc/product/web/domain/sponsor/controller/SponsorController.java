@@ -2,6 +2,7 @@ package umc.product.web.domain.sponsor.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import umc.product.web.domain.sponsor.dto.SponsorRequestDTO;
 import umc.product.web.domain.sponsor.dto.SponsorResponseDTO;
 import umc.product.web.domain.sponsor.service.SponsorCommandService;
 import umc.product.web.domain.sponsor.service.SponsorQueryService;
@@ -25,5 +26,11 @@ public class SponsorController {
     public BaseResponse<Void> deleteSponsor(@PathVariable Long sponsorId) {
         sponsorCommandService.deleteSponsor(sponsorId);
         return BaseResponse.onSuccess(null);
+    }
+
+    @PostMapping("")
+    public BaseResponse<SponsorResponseDTO.CreateSponsorResultDTO> createSponsor(@RequestBody SponsorRequestDTO.CreateSponsorDTO createSponsorDTO) {
+        SponsorResponseDTO.CreateSponsorResultDTO createSponsorResultDTO = sponsorCommandService.createSponsor(createSponsorDTO);
+        return BaseResponse.onSuccess(createSponsorResultDTO);
     }
 }

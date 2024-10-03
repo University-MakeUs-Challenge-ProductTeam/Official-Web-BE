@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class SponsorResponseDTO {
@@ -23,11 +24,21 @@ public class SponsorResponseDTO {
     @NoArgsConstructor
     @AllArgsConstructor
     public static class SponsorDTO {
-        private Long SponsorId;
+        private Long sponsorId;
         private String title;
         private String logoUrl;
         private String url;
         private String description;
+    }
+
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class CreateSponsorResultDTO {
+        private Long sponsorId;
+        private LocalDateTime createdAt;
+        private LocalDateTime updatedAt;
     }
 
 }
