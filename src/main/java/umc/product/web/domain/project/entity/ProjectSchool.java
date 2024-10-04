@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.*;
 import umc.product.web.global.common.BaseEntity;
 
-
 @Entity
 @Getter
 @Builder

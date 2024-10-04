@@ -24,7 +24,10 @@ public enum ErrorStatus implements BaseErrorCode {
     NOT_VALID_TAKE(HttpStatus.BAD_REQUEST, "COMMON_006", "take 값이 유효하지 않습니다."),
 
     // Sponsor 에러
-    SPONSOR_NOT_FOUND(HttpStatus.NOT_FOUND, "SPONSOR001", "SPONSOR가 존재하지 않습니다.");
+    SPONSOR_NOT_FOUND(HttpStatus.NOT_FOUND, "SPONSOR001", "SPONSOR가 존재하지 않습니다."),
+
+    // Project 에러
+    PROJECT_NOT_FOUND(HttpStatus.NOT_FOUND, "PROJECT001", "PROJECT가 존재하지 않습니다.");
 
     private final HttpStatus httpStatus;
     private final String code;

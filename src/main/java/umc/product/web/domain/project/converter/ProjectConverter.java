@@ -2,9 +2,7 @@ package umc.product.web.domain.project.converter;
 
 import org.springframework.data.domain.Slice;
 import umc.product.web.domain.project.dto.ProjectResponseDTO;
-import umc.product.web.domain.project.entity.Platform;
-import umc.product.web.domain.project.entity.Project;
-import umc.product.web.domain.project.entity.ProjectPlatform;
+import umc.product.web.domain.project.entity.*;
 import umc.product.web.domain.project.entity.enums.PlatformName;
 
 import java.util.List;
@@ -61,6 +59,7 @@ public class ProjectConverter {
     }
 
     public static ProjectResponseDTO.UMCProjectListDTO toUMCProjectListDTO(Slice<Project> projectSlice) {
+
         List<ProjectResponseDTO.UMCProjectDTO> umcProjectDTOList = projectSlice.stream()
                 .map(ProjectConverter::toUMCProjectDTO)
                 .toList();
@@ -73,6 +72,41 @@ public class ProjectConverter {
                 .umcProjectDTOList(umcProjectDTOList)
                 .hasNext(projectSlice.hasNext())
                 .nextCursor(nextCursor)
+                .build();
+    }
+
+    public static ProjectResponseDTO.ProjectDetailDTO toProjectDetailDTO(Project project, List<ProjectSchool> projectSchoolList, List<ProjectMember> projectMemberList) {
+
+        List<PlatformName> platformNameList = project.getProjectPlatforms().stream()
+                .map(ProjectPlatform::getPlatform)
+                .map(Platform::getPlatformName)
+                .toList();
+
+        List<ProjectResponseDTO.ProjectMemberDTO> projectMemberDTOList = projectMemberList.stream()
+                .map(ProjectConverter::toProjectMemberDTO)
+                .toList();
+
+        return ProjectResponseDTO.ProjectDetailDTO.builder()
+                .projectId(project.getId())
+                .projectName(project.getName())
+                .imageUrl(project.getImageUrl() != null && !project.getImageUrl().isEmpty() ? project.getImageUrl() : null)
+                .generation(project.getGeneration())
+                .projectSchoolList(projectSchoolList.stream().map(ProjectSchool::getName).toList())
+                .startDate(project.getStartDate())
+                .endDate(project.getEndDate())
+                .platFormNameList(platformNameList)
+                .isReleased(project.getIsReleased())
+                .description(project.getDescription())
+                .projectMemberDTOList(projectMemberDTOList)
+                .build();
+    }
+
+    public static ProjectResponseDTO.ProjectMemberDTO toProjectMemberDTO(ProjectMember projectMember) {
+        return ProjectResponseDTO.ProjectMemberDTO.builder()
+                .projectMemberId(projectMember.getId())
+                .nickname(projectMember.getNickname())
+                .name(projectMember.getName())
+                .part(projectMember.getPart())
                 .build();
     }
 }

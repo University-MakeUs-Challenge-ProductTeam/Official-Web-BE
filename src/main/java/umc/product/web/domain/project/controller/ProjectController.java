@@ -3,10 +3,7 @@ package umc.product.web.domain.project.controller;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import umc.product.web.domain.project.dto.ProjectResponseDTO;
 import umc.product.web.domain.project.service.ProjectQueryService;
 import umc.product.web.global.common.BaseResponse;
@@ -41,5 +38,10 @@ public class ProjectController {
         return BaseResponse.onSuccess(projectQueryService.getUMCProjects(generation, platformName, searchTerm, cursor, take));
     }
 
-
+    @GetMapping("/{projectId}")
+    public BaseResponse<ProjectResponseDTO.ProjectDetailDTO> getProjectDetail(
+            @PathVariable Long projectId
+    ) {
+        return BaseResponse.onSuccess(projectQueryService.getProjectDetail(projectId));
+    }
 }
