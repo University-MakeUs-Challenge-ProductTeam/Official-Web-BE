@@ -1,4 +1,4 @@
-package umc.product.web.domain.sponsor;
+package umc.product.web.domain.sponsor.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
