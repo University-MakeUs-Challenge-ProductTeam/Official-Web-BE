@@ -2,10 +2,11 @@ package umc.product.web.domain.project.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import umc.product.web.domain.project.entity.enums.PlatformName;
 import umc.product.web.global.common.BaseEntity;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -18,6 +19,9 @@ public class Project extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "project_id")
     private Long id;
+
+    @Column(name = "name", nullable = false)
+    private String name;
 
     @Column(name = "generation", nullable = false)
     private Integer generation;
@@ -33,4 +37,10 @@ public class Project extends BaseEntity {
 
     @Column(name = "description", length = 3000)
     private String description;
+
+    @Column(name = "image_url")
+    private String imageUrl;
+
+    @OneToMany(mappedBy = "project", fetch = FetchType.LAZY)
+    private List<ProjectPlatform> projectPlatforms = new ArrayList<>();
 }
