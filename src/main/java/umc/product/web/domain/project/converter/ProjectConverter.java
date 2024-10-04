@@ -43,4 +43,36 @@ public class ProjectConverter {
                 .nextCursor(nextCursor)
                 .build();
     }
+
+    public static ProjectResponseDTO.UMCProjectDTO toUMCProjectDTO(Project project) {
+
+        List<PlatformName> platformNameList = project.getProjectPlatforms().stream()
+                .map(ProjectPlatform::getPlatform)
+                .map(Platform::getPlatformName)
+                .toList();
+
+        return ProjectResponseDTO.UMCProjectDTO.builder()
+                .projectId(project.getId())
+                .projectName(project.getName())
+                .description(project.getDescription())
+                .imageUrl(project.getImageUrl() != null && !project.getImageUrl().isEmpty() ? project.getImageUrl() : null)
+                .platFormNameList(platformNameList)
+                .build();
+    }
+
+    public static ProjectResponseDTO.UMCProjectListDTO toUMCProjectListDTO(Slice<Project> projectSlice) {
+        List<ProjectResponseDTO.UMCProjectDTO> umcProjectDTOList = projectSlice.stream()
+                .map(ProjectConverter::toUMCProjectDTO)
+                .toList();
+
+        Long nextCursor = projectSlice.hasNext() && !projectSlice.getContent().isEmpty()
+                ? projectSlice.getContent().get(projectSlice.getNumberOfElements() - 1).getId()
+                : null;
+
+        return ProjectResponseDTO.UMCProjectListDTO.builder()
+                .umcProjectDTOList(umcProjectDTOList)
+                .hasNext(projectSlice.hasNext())
+                .nextCursor(nextCursor)
+                .build();
+    }
 }

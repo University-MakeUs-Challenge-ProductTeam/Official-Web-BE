@@ -31,4 +31,26 @@ public class ProjectResponseDTO {
         private String imageUrl;
         private List<PlatformName> platFormNameList;
     }
+
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class UMCProjectListDTO {
+        private List<UMCProjectDTO> umcProjectDTOList;
+        private Boolean hasNext;
+        private Long nextCursor;
+    }
+
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class UMCProjectDTO {
+        private Long projectId;
+        private String projectName;
+        private String description;
+        private String imageUrl;
+        private List<PlatformName> platFormNameList;
+    }
 }

@@ -29,4 +29,17 @@ public class ProjectController {
     ) {
         return BaseResponse.onSuccess(projectQueryService.getReleasedProjects(cursor, take));
     }
+
+    @GetMapping("")
+    public BaseResponse<ProjectResponseDTO.UMCProjectListDTO> getUMCProjects(
+            @RequestParam(name = "generation", required = false) Integer generation,
+            @RequestParam(name = "platformName", required = false) String platformName,
+            @RequestParam(name = "searchTerm", required = false) String searchTerm,
+            @CheckCursorValidation @RequestParam(name = "cursor") Long cursor,
+            @CheckTakeValidation @RequestParam(name = "take") Integer take
+    ) {
+        return BaseResponse.onSuccess(projectQueryService.getUMCProjects(generation, platformName, searchTerm, cursor, take));
+    }
+
+
 }
