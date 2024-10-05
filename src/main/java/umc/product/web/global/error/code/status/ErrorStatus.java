@@ -20,9 +20,14 @@ public enum ErrorStatus implements BaseErrorCode {
     MULTIPLE_FIELD_VALIDATION_ERROR(HttpStatus.BAD_REQUEST, "COMMON_002", "입력된 정보에 오류가 있습니다. 필드별 오류 메시지를 참조하세요."),
     NO_MATCHING_ERROR_STATUS(HttpStatus.INTERNAL_SERVER_ERROR, "COMMON_003", "서버 에러. 일치하는 errorStatus를 찾을 수 없습니다."),
     REQUEST_BODY_INVALID(HttpStatus.BAD_REQUEST, "COMMON_004", "요청 본문을 읽을 수 없습니다. 빈 문자열 또는 null이 있는지 확인해주세요."),
+    NOT_VALID_CURSOR(HttpStatus.BAD_REQUEST, "COMMON_005", "커서 값이 유효하지 않습니다."),
+    NOT_VALID_TAKE(HttpStatus.BAD_REQUEST, "COMMON_006", "take 값이 유효하지 않습니다."),
 
     // Sponsor 에러
-    SPONSOR_NOT_FOUND(HttpStatus.NOT_FOUND, "SPONSOR001", "SPONSOR가 존재하지 않습니다.");
+    SPONSOR_NOT_FOUND(HttpStatus.NOT_FOUND, "SPONSOR001", "SPONSOR가 존재하지 않습니다."),
+
+    // Project 에러
+    PROJECT_NOT_FOUND(HttpStatus.NOT_FOUND, "PROJECT001", "PROJECT가 존재하지 않습니다.");
 
     private final HttpStatus httpStatus;
     private final String code;
