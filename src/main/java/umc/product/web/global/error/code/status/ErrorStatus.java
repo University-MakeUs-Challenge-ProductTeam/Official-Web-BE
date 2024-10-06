@@ -27,7 +27,10 @@ public enum ErrorStatus implements BaseErrorCode {
     SPONSOR_NOT_FOUND(HttpStatus.NOT_FOUND, "SPONSOR001", "SPONSOR가 존재하지 않습니다."),
 
     // Project 에러
-    PROJECT_NOT_FOUND(HttpStatus.NOT_FOUND, "PROJECT001", "PROJECT가 존재하지 않습니다.");
+    PROJECT_NOT_FOUND(HttpStatus.NOT_FOUND, "PROJECT_001", "PROJECT가 존재하지 않습니다."),
+
+    // Activity Info 에러
+    ACTIVITY_INFO_NOT_FOUND(HttpStatus.NOT_FOUND, "ACTIVITY_INFO_001", "ACTIVITY INFO가 존재하지 않습니다.");
 
     private final HttpStatus httpStatus;
     private final String code;

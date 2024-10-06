@@ -18,6 +18,9 @@ public class ActivityInfo extends BaseEntity {
     @Column(name = "activity_info_id")
     private Long id;
 
+    @Column(name = "generation")
+    private Integer generation;
+
     @Column(name = "activity_start_date")
     private LocalDate activityStartDate;
 
@@ -25,11 +28,14 @@ public class ActivityInfo extends BaseEntity {
     private LocalDate activityEndDate;
 
     @Column(name = "union_ot_date")
-    private LocalDate unionOtDate;
+    private LocalDate unionOTDate;
 
     @Column(name = "club_fee")
     private Integer clubFee;
 
     @Column(name = "project_fee")
     private Integer projectFee;
+
+    @Column(name = "project_payback_fee")
+    private Integer projectPaybackFee;
 }
