@@ -22,17 +22,17 @@ public class SponsorController {
         return BaseResponse.onSuccess(sponsorListDTO);
     }
 
-    @DeleteMapping("/{sponsorId}")
-    public BaseResponse<Void> deleteSponsor(@PathVariable Long sponsorId) {
-        sponsorCommandService.deleteSponsor(sponsorId);
-        return BaseResponse.onSuccess(null);
-    }
-
-    @PostMapping("")
-    public BaseResponse<SponsorResponseDTO.CreateSponsorResultDTO> createSponsor(@RequestBody SponsorRequestDTO.CreateSponsorDTO createSponsorDTO) {
-        SponsorResponseDTO.CreateSponsorResultDTO createSponsorResultDTO = sponsorCommandService.createSponsor(createSponsorDTO);
-        return BaseResponse.onSuccess(createSponsorResultDTO);
-    }
+//    @DeleteMapping("/{sponsorId}")
+//    public BaseResponse<Void> deleteSponsor(@PathVariable Long sponsorId) {
+//        sponsorCommandService.deleteSponsor(sponsorId);
+//        return BaseResponse.onSuccess(null);
+//    }
+//
+//    @PostMapping("")
+//    public BaseResponse<SponsorResponseDTO.CreateSponsorResultDTO> createSponsor(@RequestBody SponsorRequestDTO.CreateSponsorDTO createSponsorDTO) {
+//        SponsorResponseDTO.CreateSponsorResultDTO createSponsorResultDTO = sponsorCommandService.createSponsor(createSponsorDTO);
+//        return BaseResponse.onSuccess(createSponsorResultDTO);
+//    }
 
     @PostMapping("/request")
     public BaseResponse<SponsorResponseDTO.CreateRequestSponsorResultDTO> requestSponsor(@RequestBody SponsorRequestDTO.CreateRequestSponsorDTO createRequestSponsorDTO) {
