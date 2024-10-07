@@ -27,9 +27,6 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Create directory for application.yml
-        run: mkdir -p ./src/main/resources
-
       - name: delete application-database.yml
         run: rm ./src/main/resources/application-database.yml
 
