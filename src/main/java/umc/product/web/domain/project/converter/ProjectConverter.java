@@ -20,7 +20,8 @@ public class ProjectConverter {
                 .projectId(project.getId())
                 .projectName(project.getName())
                 .description(project.getDescription())
-                .imageUrl(project.getImageUrl() != null && !project.getImageUrl().isEmpty() ? project.getImageUrl() : null)
+                .projectLogoImageUrl(project.getProjectLogoImageUrl() != null && !project.getProjectLogoImageUrl().isEmpty() ? project.getProjectLogoImageUrl() : null)
+                .projectLandingImageUrl(project.getProjectLandingImageUrl() != null && !project.getProjectLandingImageUrl().isEmpty() ? project.getProjectLandingImageUrl() : null)
                 .platFormNameList(platformNameList)
                 .build();
     }
@@ -53,7 +54,8 @@ public class ProjectConverter {
                 .projectId(project.getId())
                 .projectName(project.getName())
                 .description(project.getDescription())
-                .imageUrl(project.getImageUrl() != null && !project.getImageUrl().isEmpty() ? project.getImageUrl() : null)
+                .projectLogoImageUrl(project.getProjectLogoImageUrl() != null && !project.getProjectLogoImageUrl().isEmpty() ? project.getProjectLogoImageUrl() : null)
+                .projectLandingImageUrl(project.getProjectLandingImageUrl() != null && !project.getProjectLandingImageUrl().isEmpty() ? project.getProjectLandingImageUrl() : null)
                 .platFormNameList(platformNameList)
                 .build();
     }
@@ -93,7 +95,8 @@ public class ProjectConverter {
         return ProjectResponseDTO.ProjectDetailDTO.builder()
                 .projectId(project.getId())
                 .projectName(project.getName())
-                .imageUrl(project.getImageUrl() != null && !project.getImageUrl().isEmpty() ? project.getImageUrl() : null)
+                .projectLogoImageUrl(project.getProjectLogoImageUrl() != null && !project.getProjectLogoImageUrl().isEmpty() ? project.getProjectLogoImageUrl() : null)
+                .projectLandingImageUrl(project.getProjectLandingImageUrl() != null && !project.getProjectLandingImageUrl().isEmpty() ? project.getProjectLandingImageUrl() : null)
                 .generation(project.getGeneration())
                 .projectSchoolList(participateSchoolList)
                 .startDate(project.getStartDate())

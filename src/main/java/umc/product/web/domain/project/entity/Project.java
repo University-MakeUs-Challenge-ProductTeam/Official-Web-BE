@@ -38,8 +38,11 @@ public class Project extends BaseEntity {
     @Column(name = "description", length = 3000)
     private String description;
 
-    @Column(name = "image_url")
-    private String imageUrl;
+    @Column(name = "project_logo_image_url")
+    private String projectLogoImageUrl;
+
+    @Column(name = "project_landing_image_url")
+    private String projectLandingImageUrl;
 
     @OneToMany(mappedBy = "project", fetch = FetchType.LAZY)
     private List<ProjectPlatform> projectPlatforms = new ArrayList<>();
