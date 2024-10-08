@@ -75,7 +75,7 @@ public class ProjectConverter {
                 .build();
     }
 
-    public static ProjectResponseDTO.ProjectDetailDTO toProjectDetailDTO(Project project, List<ProjectSchool> projectSchoolList, List<ProjectMember> projectMemberList) {
+    public static ProjectResponseDTO.ProjectDetailDTO toProjectDetailDTO(Project project, List<ProjectParticipateSchool> projectParticipateSchoolList, List<ProjectMember> projectMemberList) {
 
         List<PlatformName> platformNameList = project.getProjectPlatforms().stream()
                 .map(ProjectPlatform::getPlatform)
@@ -86,12 +86,16 @@ public class ProjectConverter {
                 .map(ProjectConverter::toProjectMemberDTO)
                 .toList();
 
+        List<String> participateSchoolList = projectParticipateSchoolList.stream()
+                .map(school -> {return school.getParticipateSchool().getName();})
+                .toList();
+
         return ProjectResponseDTO.ProjectDetailDTO.builder()
                 .projectId(project.getId())
                 .projectName(project.getName())
                 .imageUrl(project.getImageUrl() != null && !project.getImageUrl().isEmpty() ? project.getImageUrl() : null)
                 .generation(project.getGeneration())
-                .projectSchoolList(projectSchoolList.stream().map(ProjectSchool::getName).toList())
+                .projectSchoolList(participateSchoolList)
                 .startDate(project.getStartDate())
                 .endDate(project.getEndDate())
                 .platFormNameList(platformNameList)

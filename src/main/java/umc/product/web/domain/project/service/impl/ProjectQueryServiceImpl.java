@@ -10,11 +10,13 @@ import umc.product.web.domain.project.converter.ProjectConverter;
 import umc.product.web.domain.project.dto.ProjectResponseDTO;
 import umc.product.web.domain.project.entity.Project;
 import umc.product.web.domain.project.entity.ProjectMember;
-import umc.product.web.domain.project.entity.ProjectSchool;
+import umc.product.web.domain.project.entity.ParticipateSchool;
+import umc.product.web.domain.project.entity.ProjectParticipateSchool;
 import umc.product.web.domain.project.entity.enums.PlatformName;
 import umc.product.web.domain.project.repository.ProjectMemberRepository;
+import umc.product.web.domain.project.repository.ProjectParticipateSchoolRepository;
 import umc.product.web.domain.project.repository.ProjectRepository;
-import umc.product.web.domain.project.repository.ProjectSchoolRepository;
+import umc.product.web.domain.project.repository.ParticipateSchoolRepository;
 import umc.product.web.domain.project.service.ProjectQueryService;
 import umc.product.web.global.error.code.handler.ProjectHandler;
 
@@ -29,8 +31,9 @@ import static umc.product.web.global.error.code.status.ErrorStatus.PROJECT_NOT_F
 public class ProjectQueryServiceImpl implements ProjectQueryService {
 
     private final ProjectRepository projectRepository;
-    private final ProjectSchoolRepository projectSchoolRepository;
+    private final ParticipateSchoolRepository participateSchoolRepository;
     private final ProjectMemberRepository projectMemberRepository;
+    private final ProjectParticipateSchoolRepository projectParticipateSchoolRepository;
 
     @Override
     public ProjectResponseDTO.ReleasedProjectListDTO getReleasedProjects(Long cursor, Integer take) {
@@ -58,9 +61,9 @@ public class ProjectQueryServiceImpl implements ProjectQueryService {
         Project project = projectRepository.findById(projectId)
                 .orElseThrow(() -> new ProjectHandler(PROJECT_NOT_FOUND));
 
-        List<ProjectSchool> projectSchoolList = projectSchoolRepository.findAllByProjectId(projectId);
+        List<ProjectParticipateSchool> projectParticipateSchoolList = projectParticipateSchoolRepository.findAllWithParticipateSchoolByProjectId(projectId);
         List<ProjectMember> projectMemberList = projectMemberRepository.findAllByProjectId(projectId);
 
-        return ProjectConverter.toProjectDetailDTO(project, projectSchoolList, projectMemberList);
+        return ProjectConverter.toProjectDetailDTO(project, projectParticipateSchoolList, projectMemberList);
     }
 }
