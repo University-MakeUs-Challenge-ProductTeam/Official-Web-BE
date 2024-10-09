@@ -30,7 +30,8 @@ public class ProjectResponseDTO {
         private Long projectId;
         private String projectName;
         private String description;
-        private String imageUrl;
+        private String projectLogoImageUrl;
+        private String projectLandingImageUrl;
         private List<PlatformName> platFormNameList;
     }
 
@@ -52,7 +53,8 @@ public class ProjectResponseDTO {
         private Long projectId;
         private String projectName;
         private String description;
-        private String imageUrl;
+        private String projectLogoImageUrl;
+        private String projectLandingImageUrl;
         private List<PlatformName> platFormNameList;
     }
 
@@ -63,7 +65,8 @@ public class ProjectResponseDTO {
     public static class ProjectDetailDTO {
         private Long projectId;
         private String projectName;
-        private String imageUrl;
+        private String projectLogoImageUrl;
+        private String projectLandingImageUrl;
         private Integer generation;
         private List<String> projectSchoolList;
         private LocalDate startDate;
