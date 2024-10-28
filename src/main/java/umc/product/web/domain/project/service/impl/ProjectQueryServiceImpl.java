@@ -10,7 +10,7 @@ import umc.product.web.domain.project.converter.ProjectConverter;
 import umc.product.web.domain.project.dto.ProjectResponseDTO;
 import umc.product.web.domain.project.entity.Project;
 import umc.product.web.domain.project.entity.ProjectMember;
-import umc.product.web.domain.project.entity.ParticipateSchool;
+//import umc.product.web.domain.project.entity.ParticipateSchool;
 import umc.product.web.domain.project.entity.ProjectParticipateSchool;
 import umc.product.web.domain.project.entity.enums.PlatformName;
 import umc.product.web.domain.project.repository.ProjectMemberRepository;

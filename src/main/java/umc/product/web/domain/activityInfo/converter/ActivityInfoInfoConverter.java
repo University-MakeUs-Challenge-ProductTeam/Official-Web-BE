@@ -9,7 +9,6 @@ public class ActivityInfoInfoConverter {
 
         return ActivityInfoResponseDTO.ActivityInfoDetailDTO.builder()
                 .activityInfoId(activityInfo.getId())
-                .generation(activityInfo.getGeneration())
                 .activityStartDate(activityInfo.getActivityStartDate())
                 .activityEndDate(activityInfo.getActivityEndDate())
                 .unionOTDate(activityInfo.getUnionOTDate())

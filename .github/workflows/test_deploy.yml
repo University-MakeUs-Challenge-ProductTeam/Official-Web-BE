@@ -33,6 +33,12 @@ jobs:
       - name: Set up application-database.yml
         run: echo "${{ secrets.APPLICATION }}" > ./src/main/resources/application-database.yml
 
+      - name: delete application-s3.yml
+        run: rm ./src/main/resources/application-s3.yml
+
+      - name: Set up application-s3.yml
+        run: echo "${{ secrets.APPLICATION_S3 }}" > ./src/main/resources/application-s3.yml
+
       - name: Grant execute permission for gradlew
         run: chmod +x ./gradlew
 
