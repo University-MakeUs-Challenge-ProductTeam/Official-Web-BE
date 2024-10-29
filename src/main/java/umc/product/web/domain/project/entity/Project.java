@@ -29,14 +29,17 @@ public class Project extends BaseEntity {
     @Column(name = "start_date", nullable = false)
     private LocalDate startDate;
 
-    @Column(name = "end_date", nullable = false)
+    @Column(name = "end_date")
     private LocalDate endDate;
 
     @Column(name = "is_released", nullable = false)
     private Boolean isReleased;
 
-    @Column(name = "description", length = 3000)
+    @Column(name = "description", length = 3000, nullable = false)
     private String description;
+
+    @Column(name = "slogan")
+    private String slogan;
 
     @Column(name = "project_logo_image_url")
     private String projectLogoImageUrl;

@@ -18,9 +18,6 @@ public class ActivityInfo extends BaseEntity {
     @Column(name = "activity_info_id")
     private Long id;
 
-    @Column(name = "generation")
-    private Integer generation;
-
     @Column(name = "activity_start_date")
     private LocalDate activityStartDate;
 

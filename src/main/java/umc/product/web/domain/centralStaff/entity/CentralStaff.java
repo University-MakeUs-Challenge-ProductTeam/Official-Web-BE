@@ -25,12 +25,15 @@ public class CentralStaff extends BaseEntity {
     @Column(name = "role", nullable = false)
     private String role;
 
-    @Column(name = "school", nullable = false)
+    @Column(name = "school")
     private String school;
 
-    @Column(name = "commitment", nullable = false)
-    private String commitment;
+    @Column(name = "introduction")
+    private String introduction;
 
-    @Column(name = "profile_image")
-    private String profileImage;
+    @Column(name = "profile_image_url")
+    private String profileImageUrl;
+
+    @Column(name = "generation")
+    private Integer generation;
 }

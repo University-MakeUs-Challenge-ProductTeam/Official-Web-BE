@@ -9,11 +9,11 @@ import umc.product.web.global.common.BaseEntity;
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class Staff extends BaseEntity {
+public class SchoolStaff extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "staff_id")
+    @Column(name = "school_staff_id")
     private Long id;
 
     @Column(name = "name", nullable = false)

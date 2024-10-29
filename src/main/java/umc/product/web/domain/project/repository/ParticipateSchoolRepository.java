@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface ParticipateSchoolRepository extends JpaRepository<ParticipateSchool, Long> {
 
-    List<ParticipateSchool> findAllByProjectId(Long projectId);
+//    List<ParticipateSchool> findAllByProjectId(Long projectId);
 }
