@@ -18,7 +18,7 @@ public class ProjectConverter {
         return ProjectResponseDTO.ReleasedProjectDTO.builder()
                 .projectId(project.getId())
                 .projectName(project.getName())
-                .description(project.getDescription())
+                .slogan(project.getSlogan())
                 .projectLogoImageUrl(project.getProjectLogoImageUrl() != null && !project.getProjectLogoImageUrl().isEmpty() ? project.getProjectLogoImageUrl() : null)
                 .platFormNameList(platformNameList)
                 .build();
@@ -46,7 +46,7 @@ public class ProjectConverter {
         return ProjectResponseDTO.UMCProjectDTO.builder()
                 .projectId(project.getId())
                 .projectName(project.getName())
-                .description(project.getDescription())
+                .slogan(project.getSlogan())
                 .projectLandingImageUrl(project.getProjectLandingImageUrl() != null && !project.getProjectLandingImageUrl().isEmpty() ? project.getProjectLandingImageUrl() : null)
                 .platFormNameList(platformNameList)
                 .build();

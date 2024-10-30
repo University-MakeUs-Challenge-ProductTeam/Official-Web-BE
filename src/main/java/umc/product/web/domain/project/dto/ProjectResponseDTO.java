@@ -31,7 +31,7 @@ public class ProjectResponseDTO {
         private Long projectId;
         private String projectName;
         @Schema(description = "프로젝트 간단한 소개")
-        private String description;
+        private String slogan;
         @Schema(description = "프로젝트 로고 이미지 url")
         private String projectLogoImageUrl;
         @Schema(description = "출시된 플랫폼")
@@ -56,7 +56,7 @@ public class ProjectResponseDTO {
         private Long projectId;
         private String projectName;
         @Schema(description = "프로젝트 간단한 소개")
-        private String description;
+        private String slogan;
         @Schema(description = "프로젝트 랜딩 이미지 url")
         private String projectLandingImageUrl;
         @Schema(description = "진행한 플랫폼")
@@ -73,13 +73,13 @@ public class ProjectResponseDTO {
         private String projectLogoImageUrl;
         private String slogan;
         private String projectLandingImageUrl;
+        private String description;
         private Integer generation;
         private List<String> projectSchoolList;
         private LocalDate startDate;
         private LocalDate endDate;
         private List<PlatformName> platFormNameList;
         private Boolean isReleased;
-        private String description;
         private List<ProjectMemberDTO> projectMemberDTOList;
     }
 
