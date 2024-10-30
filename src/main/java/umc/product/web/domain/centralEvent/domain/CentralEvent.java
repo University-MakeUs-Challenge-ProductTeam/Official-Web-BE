@@ -1,11 +1,14 @@
 package umc.product.web.domain.centralEvent.domain;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import lombok.*;
 import umc.product.web.global.common.BaseEntity;
 
+@Entity
+@Getter
+@Builder
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 public class CentralEvent extends BaseEntity {
 
     @Id
