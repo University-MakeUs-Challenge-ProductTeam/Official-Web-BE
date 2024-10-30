@@ -32,6 +32,9 @@ public enum ErrorStatus implements BaseErrorCode {
     // Activity Info 에러
     ACTIVITY_INFO_NOT_FOUND(HttpStatus.NOT_FOUND, "ACTIVITY_INFO_001", "ACTIVITY INFO가 존재하지 않습니다."),
 
+    // Activity Part 에러
+    ACTIVITY_PART_NOT_FOUND(HttpStatus.NOT_FOUND, "ACTIVITY_PART_001", "ACTIVITY PART가 존재하지 않습니다."),
+
     // REQUIREMENT 에러
     REQUIREMENT_NOT_FOUND(HttpStatus.NOT_FOUND, "REQUIREMENT001", "REQUIREMENT가 존재하지 않습니다.");
 
