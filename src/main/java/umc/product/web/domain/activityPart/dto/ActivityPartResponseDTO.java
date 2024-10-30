@@ -30,4 +30,22 @@ public class ActivityPartResponseDTO {
         private String requireSkill;
         private List<ActivityPartCurriculumDTO> activityPartCurriculumList;
     }
+
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class ActivityPartDTO {
+        private Long activityPartId;
+        private Part partName;
+        private String requireSkill;
+    }
+
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class GetActivityPartList {
+        private List<ActivityPartDTO> activityPartList;
+    }
 }

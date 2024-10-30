@@ -28,4 +28,22 @@ public class ActivityPartConverter {
                 .activityPartCurriculumList(list)
                 .build();
     }
+
+    public static ActivityPartResponseDTO.ActivityPartDTO toActivityPartDTO(ActivityPart activityPart) {
+        return ActivityPartResponseDTO.ActivityPartDTO.builder()
+                .activityPartId(activityPart.getId())
+                .partName(activityPart.getPartName())
+                .requireSkill(activityPart.getRequireSkill())
+                .build();
+    }
+
+    public static ActivityPartResponseDTO.GetActivityPartList toGetActivityPartList(List<ActivityPart> activityPartList) {
+        List<ActivityPartResponseDTO.ActivityPartDTO> list = activityPartList.stream()
+                .map(ActivityPartConverter::toActivityPartDTO)
+                .toList();
+
+        return ActivityPartResponseDTO.GetActivityPartList.builder()
+                .activityPartList(list)
+                .build();
+    }
 }

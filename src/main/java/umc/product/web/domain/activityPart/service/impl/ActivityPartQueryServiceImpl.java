@@ -32,9 +32,16 @@ public class ActivityPartQueryServiceImpl implements ActivityPartQueryService {
 
         ActivityPart activityPart = activityPartRepository.findByPartName(partName)
                 .orElseThrow(() -> new ActivityPartHandler(ACTIVITY_PART_NOT_FOUND));
-
         List<ActivityPartCurriculum> activityPartCurriculumList =  activityPartCurriculumRepository.findAllByActivityPartId(activityPart.getId());
 
         return ActivityPartConverter.toGetPActivityPartCurriculumList(activityPart, activityPartCurriculumList);
+    }
+
+    @Override
+    public ActivityPartResponseDTO.GetActivityPartList getActivityPartList() {
+
+        List<ActivityPart> activityPartList = activityPartRepository.findAll();
+
+        return ActivityPartConverter.toGetActivityPartList(activityPartList);
     }
 }

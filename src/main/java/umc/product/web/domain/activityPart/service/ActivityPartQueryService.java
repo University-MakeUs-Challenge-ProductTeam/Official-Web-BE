@@ -6,4 +6,6 @@ import umc.product.web.domain.activityPart.entity.enums.Part;
 public interface ActivityPartQueryService {
 
     ActivityPartResponseDTO.GetActivityPartCurriculumList getActivityPartCurriculumsList(Part part);
+
+    ActivityPartResponseDTO.GetActivityPartList getActivityPartList();
 }
