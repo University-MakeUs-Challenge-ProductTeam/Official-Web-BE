@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import umc.product.web.domain.requirement.dto.RequirementResponseDTO;
 import umc.product.web.domain.requirement.service.RequirementQueryService;
+import umc.product.web.global.common.BaseResponse;
 import umc.product.web.global.error.code.ErrorReasonDTO;
 
 
@@ -37,8 +38,8 @@ public class RequirementController {
             ),
     })
     @GetMapping("")
-    public RequirementResponseDTO.RequirementInfoDTO getRequirementInfo(@RequestParam("schoolName") String schoolName) {
-        return requirementQueryService.getRequirementInfo(schoolName);
+    public BaseResponse<RequirementResponseDTO.RequirementInfoDTO> getRequirementInfo(@RequestParam("schoolName") String schoolName) {
+        return BaseResponse.onSuccess(requirementQueryService.getRequirementInfo(schoolName));
     }
 
 }

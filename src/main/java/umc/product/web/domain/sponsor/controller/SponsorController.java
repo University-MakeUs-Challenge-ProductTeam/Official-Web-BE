@@ -5,6 +5,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import umc.product.web.domain.sponsor.dto.SponsorRequestDTO;
@@ -17,6 +18,7 @@ import umc.product.web.global.error.code.ErrorReasonDTO;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/sponsors")
+@Tag(name = "후원사 API")
 public class SponsorController {
 
     private final SponsorCommandService sponsorCommandService;
