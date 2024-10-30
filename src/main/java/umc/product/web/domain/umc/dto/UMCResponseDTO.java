@@ -23,6 +23,7 @@ public class UMCResponseDTO {
     @NoArgsConstructor
     @AllArgsConstructor
     public static class GetParticipateSchoolList {
+        private Integer totalSchoolCount;
         private List<ParticipateSchoolDTO> participateSchoolList;
     }
 }

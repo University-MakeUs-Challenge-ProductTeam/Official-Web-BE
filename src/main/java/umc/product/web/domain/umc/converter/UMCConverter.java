@@ -20,6 +20,7 @@ public class UMCConverter {
                 .toList();
 
         return UMCResponseDTO.GetParticipateSchoolList.builder()
+                .totalSchoolCount(participateSchoolList.size())
                 .participateSchoolList(list)
                 .build();
     }
