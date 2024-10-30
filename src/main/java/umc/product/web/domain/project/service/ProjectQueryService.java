@@ -12,4 +12,6 @@ public interface ProjectQueryService {
     ProjectResponseDTO.ProjectDetailDTO getProjectDetail(Long projectId);
 
     ProjectResponseDTO.GetGenerationListDTO getGenerationList();
+
+    ProjectResponseDTO.GetPlatformListDTO getPlatformList();
 }

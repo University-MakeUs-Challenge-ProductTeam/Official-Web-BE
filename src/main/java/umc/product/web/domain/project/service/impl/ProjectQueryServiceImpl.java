@@ -9,10 +9,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import umc.product.web.domain.project.converter.ProjectConverter;
 import umc.product.web.domain.project.dto.ProjectResponseDTO;
+import umc.product.web.domain.project.entity.Platform;
 import umc.product.web.domain.project.entity.Project;
 import umc.product.web.domain.project.entity.ProjectMember;
 import umc.product.web.domain.project.entity.ProjectParticipateSchool;
 import umc.product.web.domain.project.entity.enums.PlatformName;
+import umc.product.web.domain.project.repository.PlatformRepository;
 import umc.product.web.domain.project.repository.ProjectMemberRepository;
 import umc.product.web.domain.project.repository.ProjectParticipateSchoolRepository;
 import umc.product.web.domain.project.repository.ProjectRepository;
@@ -32,6 +34,7 @@ public class ProjectQueryServiceImpl implements ProjectQueryService {
     private final ProjectRepository projectRepository;
     private final ProjectMemberRepository projectMemberRepository;
     private final ProjectParticipateSchoolRepository projectParticipateSchoolRepository;
+    private final PlatformRepository platformRepository;
 
     @Override
     public ProjectResponseDTO.ReleasedProjectListDTO getReleasedProjects(Long cursor, Integer take) {
@@ -74,7 +77,13 @@ public class ProjectQueryServiceImpl implements ProjectQueryService {
     public ProjectResponseDTO.GetGenerationListDTO getGenerationList() {
 
         List<Integer> generationList = projectRepository.findDistinctGenerationList();
-
         return ProjectConverter.toGetGenerationListDTO(generationList);
+    }
+
+    @Override
+    public ProjectResponseDTO.GetPlatformListDTO getPlatformList() {
+
+        List<Platform> platformList = platformRepository.findAll();
+        return ProjectConverter.toGetPlatformListDTO(platformList);
     }
 }

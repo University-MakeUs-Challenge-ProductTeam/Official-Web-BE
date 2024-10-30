@@ -70,4 +70,13 @@ public class ProjectController {
     public BaseResponse<ProjectResponseDTO.GetGenerationListDTO> getGenerationList() {
         return BaseResponse.onSuccess(projectQueryService.getGenerationList());
     }
+
+    @GetMapping("/platforms")
+    @Operation(summary = "프로젝트 플랫폼 조회", description = "UMC 프로젝트의 플랫폼 리스트를 조회합니다")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "COMMON200", description = "성공입니다.")
+    })
+    public BaseResponse<ProjectResponseDTO.GetPlatformListDTO> getPlatformList() {
+        return BaseResponse.onSuccess(projectQueryService.getPlatformList());
+    }
 }

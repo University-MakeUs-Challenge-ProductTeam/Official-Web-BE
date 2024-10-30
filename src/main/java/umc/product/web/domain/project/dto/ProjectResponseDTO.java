@@ -101,4 +101,12 @@ public class ProjectResponseDTO {
     public static class GetGenerationListDTO {
         private List<Integer> generationList;
     }
+
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class GetPlatformListDTO {
+        private List<PlatformName> platformList;
+    }
 }
