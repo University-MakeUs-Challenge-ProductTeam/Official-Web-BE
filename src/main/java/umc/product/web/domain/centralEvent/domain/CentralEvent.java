@@ -20,7 +20,7 @@ public class CentralEvent extends BaseEntity {
     @Column(name = "event_image_url")
     private String eventImageUrl;
 
-    @Column(name = "description", nullable = false)
+    @Column(name = "description", nullable = false, length = 10000)
     private String description;
 
     @Enumerated(EnumType.STRING)
