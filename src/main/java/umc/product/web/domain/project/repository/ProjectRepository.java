@@ -8,6 +8,8 @@ import org.springframework.data.repository.query.Param;
 import umc.product.web.domain.project.entity.Project;
 import umc.product.web.domain.project.entity.enums.PlatformName;
 
+import java.util.List;
+
 public interface ProjectRepository extends JpaRepository<Project, Long> {
 
     @Query("SELECT p FROM Project p " +
@@ -27,9 +29,13 @@ public interface ProjectRepository extends JpaRepository<Project, Long> {
             "AND (:searchTerm IS NULL OR p.name LIKE %:searchTerm%) " +
             "AND p.id > :cursor " +
             "ORDER BY p.id ASC")
-    Slice<Project> findProjectsByPlatform(@Param("generation") Integer generation,
-                                          @Param("platformName") PlatformName platformName,
-                                          @Param("searchTerm") String searchTerm,
-                                          @Param("cursor") Long cursor,
-                                          Pageable pageable);
+    Slice<Project> findProjectsByPlatform(
+            @Param("generation") Integer generation,
+            @Param("platformName") PlatformName platformName,
+            @Param("searchTerm") String searchTerm,
+            @Param("cursor") Long cursor,
+            Pageable pageable);
+
+    @Query("SELECT DISTINCT p.generation FROM Project p ORDER BY p.generation")
+    List<Integer> findDistinctGenerationList();
 }

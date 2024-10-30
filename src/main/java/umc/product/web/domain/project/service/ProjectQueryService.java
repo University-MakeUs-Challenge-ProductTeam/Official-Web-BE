@@ -10,4 +10,6 @@ public interface ProjectQueryService {
     ProjectResponseDTO.UMCProjectListDTO getUMCProjects(Integer generation, PlatformName platformName, String searchTerm, Long cursor, Integer take);
 
     ProjectResponseDTO.ProjectDetailDTO getProjectDetail(Long projectId);
+
+    ProjectResponseDTO.GetGenerationListDTO getGenerationList();
 }

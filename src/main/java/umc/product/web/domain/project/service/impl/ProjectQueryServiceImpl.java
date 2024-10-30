@@ -16,7 +16,6 @@ import umc.product.web.domain.project.entity.enums.PlatformName;
 import umc.product.web.domain.project.repository.ProjectMemberRepository;
 import umc.product.web.domain.project.repository.ProjectParticipateSchoolRepository;
 import umc.product.web.domain.project.repository.ProjectRepository;
-import umc.product.web.domain.project.repository.ParticipateSchoolRepository;
 import umc.product.web.domain.project.service.ProjectQueryService;
 import umc.product.web.global.error.code.handler.ProjectHandler;
 
@@ -31,7 +30,6 @@ import static umc.product.web.global.error.code.status.ErrorStatus.PROJECT_NOT_F
 public class ProjectQueryServiceImpl implements ProjectQueryService {
 
     private final ProjectRepository projectRepository;
-    private final ParticipateSchoolRepository participateSchoolRepository;
     private final ProjectMemberRepository projectMemberRepository;
     private final ProjectParticipateSchoolRepository projectParticipateSchoolRepository;
 
@@ -70,5 +68,13 @@ public class ProjectQueryServiceImpl implements ProjectQueryService {
                 .orElseThrow(() -> new ProjectHandler(PROJECT_NOT_FOUND));
 
         return ProjectConverter.toProjectDetailDTO(project, projectParticipateSchoolList, projectMemberList);
+    }
+
+    @Override
+    public ProjectResponseDTO.GetGenerationListDTO getGenerationList() {
+
+        List<Integer> generationList = projectRepository.findDistinctGenerationList();
+
+        return ProjectConverter.toGetGenerationListDTO(generationList);
     }
 }

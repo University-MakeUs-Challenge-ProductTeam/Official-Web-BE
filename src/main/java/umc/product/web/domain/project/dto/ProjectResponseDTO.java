@@ -93,4 +93,12 @@ public class ProjectResponseDTO {
         private String name;
         private Part part;
     }
+
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class GetGenerationListDTO {
+        private List<Integer> generationList;
+    }
 }

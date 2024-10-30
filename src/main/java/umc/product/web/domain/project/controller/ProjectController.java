@@ -52,7 +52,7 @@ public class ProjectController {
     }
 
     @GetMapping("/{projectId}")
-    @Operation(summary = "프로젝트 상세 조회", description = "")
+    @Operation(summary = "프로젝트 상세 조회", description = "프로젝트의 상세 정보를 조회합니다.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "COMMON200", description = "성공입니다.")
     })
@@ -60,5 +60,14 @@ public class ProjectController {
             @PathVariable Long projectId
     ) {
         return BaseResponse.onSuccess(projectQueryService.getProjectDetail(projectId));
+    }
+
+    @GetMapping("/generations")
+    @Operation(summary = "프로젝트 기수 조회", description = "UMC 프로젝트의 기수 리스트를 조회합니다")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "COMMON200", description = "성공입니다.")
+    })
+    public BaseResponse<ProjectResponseDTO.GetGenerationListDTO> getGenerationList() {
+        return BaseResponse.onSuccess(projectQueryService.getGenerationList());
     }
 }
