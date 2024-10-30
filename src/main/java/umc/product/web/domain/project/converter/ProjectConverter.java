@@ -105,4 +105,10 @@ public class ProjectConverter {
                 .part(projectMember.getPart())
                 .build();
     }
+
+    public static ProjectResponseDTO.GetGenerationListDTO toGetGenerationListDTO(List<Integer> generationList) {
+        return ProjectResponseDTO.GetGenerationListDTO.builder()
+                .generationList(generationList)
+                .build();
+    }
 }
