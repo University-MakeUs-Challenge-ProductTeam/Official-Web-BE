@@ -20,13 +20,13 @@ import umc.product.web.global.validation.annotation.CheckTakeValidation;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/central-staff")
-@Tag(name = "중앙운영진 API")
+@Tag(name = "중앙 운영진 API")
 public class CentralStaffController {
 
     private final CentralStaffQueryService centralStaffQueryService;
 
     @GetMapping("")
-    @Operation(summary = "학생 유저가 본인의 참여 챌린지 리스트 조회", description = "[학생] 챌린지 진행 상태 필터링/챌린지 최종 승인,반려,대기중 상태 필터링/제목 검색 (전체 조회인 경우 null)")
+    @Operation(summary = "중앙 운영진 리스트 조회", description = "커서 초기값은 0 입니다.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "COMMON200", description = "성공입니다."),
             @ApiResponse(responseCode = "COMMON_005", description = "커서 값이 유효하지 않습니다.  초기값은 0 입니다."),
