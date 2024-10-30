@@ -1,5 +1,6 @@
 package umc.product.web.domain.project.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -29,9 +30,11 @@ public class ProjectResponseDTO {
     public static class ReleasedProjectDTO {
         private Long projectId;
         private String projectName;
-        private String description;
+        @Schema(description = "프로젝트 간단한 소개")
+        private String slogan;
+        @Schema(description = "프로젝트 로고 이미지 url")
         private String projectLogoImageUrl;
-        private String projectLandingImageUrl;
+        @Schema(description = "출시된 플랫폼")
         private List<PlatformName> platFormNameList;
     }
 
@@ -40,7 +43,7 @@ public class ProjectResponseDTO {
     @NoArgsConstructor
     @AllArgsConstructor
     public static class UMCProjectListDTO {
-        private List<UMCProjectDTO> umcProjectDTOList;
+        private List<UMCProjectDTO> umcProjectList;
         private Boolean hasNext;
         private Long nextCursor;
     }
@@ -52,9 +55,11 @@ public class ProjectResponseDTO {
     public static class UMCProjectDTO {
         private Long projectId;
         private String projectName;
-        private String description;
-        private String projectLogoImageUrl;
+        @Schema(description = "프로젝트 간단한 소개")
+        private String slogan;
+        @Schema(description = "프로젝트 랜딩 이미지 url")
         private String projectLandingImageUrl;
+        @Schema(description = "진행한 플랫폼")
         private List<PlatformName> platFormNameList;
     }
 
@@ -66,14 +71,15 @@ public class ProjectResponseDTO {
         private Long projectId;
         private String projectName;
         private String projectLogoImageUrl;
+        private String slogan;
         private String projectLandingImageUrl;
+        private String description;
         private Integer generation;
         private List<String> projectSchoolList;
         private LocalDate startDate;
         private LocalDate endDate;
         private List<PlatformName> platFormNameList;
         private Boolean isReleased;
-        private String description;
         private List<ProjectMemberDTO> projectMemberDTOList;
     }
 

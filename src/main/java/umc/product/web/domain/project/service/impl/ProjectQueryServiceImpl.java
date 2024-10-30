@@ -4,13 +4,13 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import umc.product.web.domain.project.converter.ProjectConverter;
 import umc.product.web.domain.project.dto.ProjectResponseDTO;
 import umc.product.web.domain.project.entity.Project;
 import umc.product.web.domain.project.entity.ProjectMember;
-//import umc.product.web.domain.project.entity.ParticipateSchool;
 import umc.product.web.domain.project.entity.ProjectParticipateSchool;
 import umc.product.web.domain.project.entity.enums.PlatformName;
 import umc.product.web.domain.project.repository.ProjectMemberRepository;
@@ -40,29 +40,34 @@ public class ProjectQueryServiceImpl implements ProjectQueryService {
 
         Long startCursor = (cursor == 1) ? 0L : cursor;
         Pageable pageable = PageRequest.of(0, take);
+        Slice<Project> projectSlice = projectRepository.findReleasedProjectsWithPlatform(startCursor, pageable);
+        Long nextCursor = projectSlice.hasNext() && !projectSlice.getContent().isEmpty()
+                ? projectSlice.getContent().get(projectSlice.getNumberOfElements() - 1).getId()
+                : null;
 
-        return ProjectConverter.toReleasedProjectListDTO(projectRepository.findReleasedProjectsWithPlatform(startCursor, pageable));
+        return ProjectConverter.toReleasedProjectListDTO(projectSlice, nextCursor);
     }
 
     @Override
-    public ProjectResponseDTO.UMCProjectListDTO getUMCProjects(Integer generation, String platform, String searchTerm, Long cursor, Integer take) {
+    public ProjectResponseDTO.UMCProjectListDTO getUMCProjects(Integer generation, PlatformName platformName, String searchTerm, Long cursor, Integer take) {
 
         Long startCursor = (cursor == 1) ? 0L : cursor;
         Pageable pageable = PageRequest.of(0, take);
+        Slice<Project> projectSlice = projectRepository.findProjectsByPlatform(generation, platformName, searchTerm, startCursor, pageable);
+        Long nextCursor = projectSlice.hasNext() && !projectSlice.getContent().isEmpty()
+                ? projectSlice.getContent().get(projectSlice.getNumberOfElements() - 1).getId()
+                : null;
 
-        PlatformName platformName = (platform != null) ? PlatformName.valueOf(platform.toUpperCase()) : null;
-
-        return ProjectConverter.toUMCProjectListDTO(projectRepository.findProjectsByPlatform(generation, searchTerm, platformName, startCursor, pageable));
+        return ProjectConverter.toUMCProjectListDTO(projectSlice, nextCursor);
     }
 
     @Override
     public ProjectResponseDTO.ProjectDetailDTO getProjectDetail(Long projectId) {
 
-        Project project = projectRepository.findById(projectId)
-                .orElseThrow(() -> new ProjectHandler(PROJECT_NOT_FOUND));
-
         List<ProjectParticipateSchool> projectParticipateSchoolList = projectParticipateSchoolRepository.findAllWithParticipateSchoolByProjectId(projectId);
         List<ProjectMember> projectMemberList = projectMemberRepository.findAllByProjectId(projectId);
+        Project project = projectRepository.findById(projectId)
+                .orElseThrow(() -> new ProjectHandler(PROJECT_NOT_FOUND));
 
         return ProjectConverter.toProjectDetailDTO(project, projectParticipateSchoolList, projectMemberList);
     }
