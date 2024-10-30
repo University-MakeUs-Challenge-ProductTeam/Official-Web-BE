@@ -64,11 +64,10 @@ public class ProjectQueryServiceImpl implements ProjectQueryService {
     @Override
     public ProjectResponseDTO.ProjectDetailDTO getProjectDetail(Long projectId) {
 
-        Project project = projectRepository.findById(projectId)
-                .orElseThrow(() -> new ProjectHandler(PROJECT_NOT_FOUND));
-
         List<ProjectParticipateSchool> projectParticipateSchoolList = projectParticipateSchoolRepository.findAllWithParticipateSchoolByProjectId(projectId);
         List<ProjectMember> projectMemberList = projectMemberRepository.findAllByProjectId(projectId);
+        Project project = projectRepository.findById(projectId)
+                .orElseThrow(() -> new ProjectHandler(PROJECT_NOT_FOUND));
 
         return ProjectConverter.toProjectDetailDTO(project, projectParticipateSchoolList, projectMemberList);
     }

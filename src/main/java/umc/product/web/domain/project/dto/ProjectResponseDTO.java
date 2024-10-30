@@ -71,6 +71,7 @@ public class ProjectResponseDTO {
         private Long projectId;
         private String projectName;
         private String projectLogoImageUrl;
+        private String slogan;
         private String projectLandingImageUrl;
         private Integer generation;
         private List<String> projectSchoolList;
