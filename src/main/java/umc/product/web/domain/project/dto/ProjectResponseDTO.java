@@ -1,5 +1,6 @@
 package umc.product.web.domain.project.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -29,9 +30,11 @@ public class ProjectResponseDTO {
     public static class ReleasedProjectDTO {
         private Long projectId;
         private String projectName;
+        @Schema(description = "프로젝트 간단한 소개")
         private String description;
+        @Schema(description = "프로젝트 로고 이미지 url")
         private String projectLogoImageUrl;
-        private String projectLandingImageUrl;
+        @Schema(description = "출시된 플랫폼")
         private List<PlatformName> platFormNameList;
     }
 

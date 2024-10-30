@@ -12,8 +12,7 @@ public class ProjectConverter {
     public static ProjectResponseDTO.ReleasedProjectDTO toReleasedProjectDTO(Project project) {
 
         List<PlatformName> platformNameList = project.getProjectPlatforms().stream()
-                .map(ProjectPlatform::getPlatform)
-                .map(Platform::getPlatformName)
+                .map(projectPlatform -> projectPlatform.getPlatform().getPlatformName())
                 .toList();
 
         return ProjectResponseDTO.ReleasedProjectDTO.builder()
@@ -21,7 +20,6 @@ public class ProjectConverter {
                 .projectName(project.getName())
                 .description(project.getDescription())
                 .projectLogoImageUrl(project.getProjectLogoImageUrl() != null && !project.getProjectLogoImageUrl().isEmpty() ? project.getProjectLogoImageUrl() : null)
-                .projectLandingImageUrl(project.getProjectLandingImageUrl() != null && !project.getProjectLandingImageUrl().isEmpty() ? project.getProjectLandingImageUrl() : null)
                 .platFormNameList(platformNameList)
                 .build();
     }
