@@ -2,6 +2,7 @@ package umc.product.web.domain.centralEvent.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
+import umc.product.web.domain.centralEvent.domain.enums.EventType;
 import umc.product.web.global.common.BaseEntity;
 
 @Entity
@@ -21,4 +22,7 @@ public class CentralEvent extends BaseEntity {
 
     @Column(name = "description", nullable = false)
     private String description;
+
+    @Enumerated(EnumType.STRING)
+    private EventType eventType;
 }
