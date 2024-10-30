@@ -43,7 +43,7 @@ public class ProjectResponseDTO {
     @NoArgsConstructor
     @AllArgsConstructor
     public static class UMCProjectListDTO {
-        private List<UMCProjectDTO> umcProjectDTOList;
+        private List<UMCProjectDTO> umcProjectList;
         private Boolean hasNext;
         private Long nextCursor;
     }
@@ -55,9 +55,11 @@ public class ProjectResponseDTO {
     public static class UMCProjectDTO {
         private Long projectId;
         private String projectName;
+        @Schema(description = "프로젝트 간단한 소개")
         private String description;
-        private String projectLogoImageUrl;
+        @Schema(description = "프로젝트 랜딩 이미지 url")
         private String projectLandingImageUrl;
+        @Schema(description = "진행한 플랫폼")
         private List<PlatformName> platFormNameList;
     }
 

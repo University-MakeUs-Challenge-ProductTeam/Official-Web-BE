@@ -23,12 +23,10 @@ public interface ProjectRepository extends JpaRepository<Project, Long> {
             "JOIN p.projectPlatforms pp " +
             "JOIN pp.platform pf " +
             "WHERE (:generation IS NULL OR p.generation = :generation) " +
-            "AND (:searchTerm IS NULL OR p.name LIKE %:searchTerm%) " +
             "AND (:platformName IS NULL OR pf.platformName = :platformName) " +
             "AND p.id > :cursor " +
             "ORDER BY p.id ASC")
     Slice<Project> findProjectsByPlatform(@Param("generation") Integer generation,
-                                          @Param("searchTerm") String searchTerm,
                                           @Param("platformName") PlatformName platformName,
                                           @Param("cursor") Long cursor,
                                           Pageable pageable);
