@@ -39,7 +39,7 @@ public class ProjectQueryServiceImpl implements ProjectQueryService {
     @Override
     public ProjectResponseDTO.ReleasedProjectListDTO getReleasedProjects(Long cursor, Integer take) {
 
-        Long startCursor = (cursor == 1) ? 0L : cursor;
+        Long startCursor = (cursor == 0) ? Long.MAX_VALUE : cursor;
         Pageable pageable = PageRequest.of(0, take);
         Slice<Project> projectSlice = projectRepository.findReleasedProjectsWithPlatform(startCursor, pageable);
         Long nextCursor = projectSlice.hasNext() && !projectSlice.getContent().isEmpty()
@@ -52,9 +52,9 @@ public class ProjectQueryServiceImpl implements ProjectQueryService {
     @Override
     public ProjectResponseDTO.UMCProjectListDTO getUMCProjects(Integer generation, PlatformName platformName, String searchTerm, Long cursor, Integer take) {
 
-        Long startCursor = (cursor == 1) ? 0L : cursor;
+        Long startCursor = (cursor == 0) ? Long.MAX_VALUE : cursor;
         Pageable pageable = PageRequest.of(0, take);
-        Slice<Project> projectSlice = projectRepository.findProjectsByPlatform(generation, platformName, searchTerm, startCursor, pageable);
+        Slice<Project> projectSlice = projectRepository.findProjectsByGenerationAndPlatformNameWithPageable(generation, platformName, searchTerm, startCursor, pageable);
         Long nextCursor = projectSlice.hasNext() && !projectSlice.getContent().isEmpty()
                 ? projectSlice.getContent().get(projectSlice.getNumberOfElements() - 1).getId()
                 : null;
