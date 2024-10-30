@@ -26,6 +26,9 @@ public enum ErrorStatus implements BaseErrorCode {
     // Sponsor 에러
     SPONSOR_NOT_FOUND(HttpStatus.NOT_FOUND, "SPONSOR001", "SPONSOR가 존재하지 않습니다."),
 
+    // CentralEvent 에러
+    CENTRAL_EVENT_NOT_FOUND(HttpStatus.NOT_FOUND, "CENTRAL_EVENT001", "CENTRAL EVENT가 존재하지 않습니다."),
+
     // Project 에러
     PROJECT_NOT_FOUND(HttpStatus.NOT_FOUND, "PROJECT_001", "PROJECT가 존재하지 않습니다."),
 

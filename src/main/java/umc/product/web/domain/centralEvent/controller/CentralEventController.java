@@ -1,4 +1,4 @@
-package umc.product.web.domain.requirement.controller;
+package umc.product.web.domain.centralEvent.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -11,35 +11,35 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import umc.product.web.domain.requirement.dto.RequirementResponseDTO;
-import umc.product.web.domain.requirement.service.RequirementQueryService;
+import umc.product.web.domain.centralEvent.domain.enums.EventType;
+import umc.product.web.domain.centralEvent.dto.CentralEventResponseDTO;
 import umc.product.web.global.common.BaseResponse;
 import umc.product.web.global.error.code.ErrorReasonDTO;
-
+import umc.product.web.global.error.code.status.ErrorStatus;
 
 @RestController
+@RequestMapping("/api/v1")
 @RequiredArgsConstructor
-@RequestMapping("/api/requirements")
-@Tag(name = "모집 일정 API")
-public class RequirementController {
+@Tag(name = "주요활동 API")
+public class CentralEventController {
 
-    public final RequirementQueryService requirementQueryService;
-
-    @Operation(summary = "모집 일정, 모집 파트, 필수 역량, 운영진 조회 API", description = "학교에 맞추어서 모집 일정, 모집 파트, 필수 역량, 운영진 정보를 조회 합니다. _by 제이미_")
+    @Operation(summary = "주요 활동 조회 API", description = "주요 활동 타입에 맞추어서 조회를 합니다. _by 제이미_")
     @ApiResponses({
             @ApiResponse(
                     responseCode = "COMMON200",
                     description = "OK, 성공"
             ),
             @ApiResponse(
-                    responseCode = "REQUIREMENT001",
-                    description = "REQUIREMENT가 존재하지 않습니다.",
+                    responseCode = "CENTRAL_EVENT001",
+                    description = "CENTRAL EVENT가 존재하지 않습니다.",
                     content = @Content(schema = @Schema(implementation = ErrorReasonDTO.class))
             ),
     })
-    @GetMapping("")
-    public BaseResponse<RequirementResponseDTO.RequirementInfoDTO> getRequirementInfo(@RequestParam("schoolName") String schoolName) {
-        return BaseResponse.onSuccess(requirementQueryService.getRequirementInfo(schoolName));
-    }
+    @GetMapping("/central-events")
+    public BaseResponse<CentralEventResponseDTO.CentralEventInfoDTO> getCentralEvent(
+            @RequestParam(name = "eventType") EventType eventType
+    ) {
 
+        return BaseResponse.onSuccess(null);
+    }
 }
