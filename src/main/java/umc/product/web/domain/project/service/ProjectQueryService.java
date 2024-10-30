@@ -7,7 +7,7 @@ public interface ProjectQueryService {
 
     ProjectResponseDTO.ReleasedProjectListDTO getReleasedProjects(Long cursor, Integer take);
 
-    ProjectResponseDTO.UMCProjectListDTO getUMCProjects(Integer generation, PlatformName platformName, Long cursor, Integer take);
+    ProjectResponseDTO.UMCProjectListDTO getUMCProjects(Integer generation, PlatformName platformName, String searchTerm, Long cursor, Integer take);
 
     ProjectResponseDTO.ProjectDetailDTO getProjectDetail(Long projectId);
 }

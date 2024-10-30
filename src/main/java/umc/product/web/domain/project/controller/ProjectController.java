@@ -44,10 +44,11 @@ public class ProjectController {
     public BaseResponse<ProjectResponseDTO.UMCProjectListDTO> getUMCProjects(
             @RequestParam(name = "generation", required = false) Integer generation,
             @RequestParam(name = "platformName", required = false) PlatformName platformName,
+            @RequestParam(name = "searchTerm", required = false) String searchTerm,
             @CheckCursorValidation @RequestParam(name = "cursor") Long cursor,
             @CheckTakeValidation @RequestParam(name = "take") Integer take
     ) {
-        return BaseResponse.onSuccess(projectQueryService.getUMCProjects(generation, platformName, cursor, take));
+        return BaseResponse.onSuccess(projectQueryService.getUMCProjects(generation, platformName, searchTerm, cursor, take));
     }
 
     @GetMapping("/{projectId}")
