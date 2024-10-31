@@ -3,9 +3,7 @@ package umc.product.web.domain.centralStaff.service.impl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import umc.product.web.domain.centralStaff.converter.CentralStaffConverter;
@@ -23,12 +21,11 @@ public class CentralStaffQueryServiceImpl implements CentralStaffQueryService {
     private final CentralStaffRepository centralStaffRepository;
 
     @Override
-    public CentralStaffResponseDTO.CentralStaffListDTO getCentralStaffList(Integer generation, Long cursor, Integer take) {
+    public CentralStaffResponseDTO.CentralStaffListDTO getCentralStaffList(Integer generation, int page, int size) {
 
-        Pageable pageable = PageRequest.of(0, take, Sort.by("id").ascending());
+        PageRequest pageRequest = PageRequest.of(page, size);
         Slice<CentralStaff> centralStaffSlice = centralStaffRepository.findByGenerationWithPageable(
-                generation, cursor, pageable
-        );
+                generation, pageRequest);
 
         Long nextCursor = centralStaffSlice.hasNext() && !centralStaffSlice.getContent().isEmpty()
                 ? centralStaffSlice.getContent().get(centralStaffSlice.getContent().size() - 1).getId()
