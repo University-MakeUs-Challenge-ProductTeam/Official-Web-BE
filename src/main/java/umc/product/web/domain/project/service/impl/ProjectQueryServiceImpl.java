@@ -3,7 +3,6 @@ package umc.product.web.domain.project.service.impl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,11 +36,10 @@ public class ProjectQueryServiceImpl implements ProjectQueryService {
     private final PlatformRepository platformRepository;
 
     @Override
-    public ProjectResponseDTO.ReleasedProjectListDTO getReleasedProjects(Long cursor, Integer take) {
+    public ProjectResponseDTO.ReleasedProjectListDTO getReleasedProjects(int page, int size) {
 
-        Long startCursor = (cursor == 0) ? Long.MAX_VALUE : cursor;
-        Pageable pageable = PageRequest.of(0, take);
-        Slice<Project> projectSlice = projectRepository.findReleasedProjectsWithPlatform(startCursor, pageable);
+        PageRequest pageRequest = PageRequest.of(page, size);
+        Slice<Project> projectSlice = projectRepository.findReleasedProjectsWithPlatform(pageRequest);
         Long nextCursor = projectSlice.hasNext() && !projectSlice.getContent().isEmpty()
                 ? projectSlice.getContent().get(projectSlice.getNumberOfElements() - 1).getId()
                 : null;
@@ -50,11 +48,10 @@ public class ProjectQueryServiceImpl implements ProjectQueryService {
     }
 
     @Override
-    public ProjectResponseDTO.UMCProjectListDTO getUMCProjects(Integer generation, PlatformName platformName, String searchTerm, Long cursor, Integer take) {
+    public ProjectResponseDTO.UMCProjectListDTO getUMCProjects(Integer generation, PlatformName platformName, String searchTerm, int page, int size) {
 
-        Long startCursor = (cursor == 0) ? Long.MAX_VALUE : cursor;
-        Pageable pageable = PageRequest.of(0, take);
-        Slice<Project> projectSlice = projectRepository.findProjectsByGenerationAndPlatformNameWithPageable(generation, platformName, searchTerm, startCursor, pageable);
+        PageRequest pageRequest = PageRequest.of(page, size);
+        Slice<Project> projectSlice = projectRepository.findProjectsByGenerationAndPlatformNameWithPageable(generation, platformName, searchTerm, pageRequest);
         Long nextCursor = projectSlice.hasNext() && !projectSlice.getContent().isEmpty()
                 ? projectSlice.getContent().get(projectSlice.getNumberOfElements() - 1).getId()
                 : null;

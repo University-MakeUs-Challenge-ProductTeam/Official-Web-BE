@@ -5,9 +5,9 @@ import umc.product.web.domain.project.entity.enums.PlatformName;
 
 public interface ProjectQueryService {
 
-    ProjectResponseDTO.ReleasedProjectListDTO getReleasedProjects(Long cursor, Integer take);
+    ProjectResponseDTO.ReleasedProjectListDTO getReleasedProjects(int page, int size);
 
-    ProjectResponseDTO.UMCProjectListDTO getUMCProjects(Integer generation, PlatformName platformName, String searchTerm, Long cursor, Integer take);
+    ProjectResponseDTO.UMCProjectListDTO getUMCProjects(Integer generation, PlatformName platformName, String searchTerm, int page, int size);
 
     ProjectResponseDTO.ProjectDetailDTO getProjectDetail(Long projectId);
 
