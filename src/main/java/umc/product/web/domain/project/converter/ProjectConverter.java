@@ -111,4 +111,14 @@ public class ProjectConverter {
                 .generationList(generationList)
                 .build();
     }
+
+    public static ProjectResponseDTO.GetPlatformListDTO toGetPlatformListDTO(List<Platform> platformList) {
+        List<PlatformName> list = platformList.stream()
+                .map(Platform::getPlatformName)
+                .toList();
+
+        return ProjectResponseDTO.GetPlatformListDTO.builder()
+                .platformList(list)
+                .build();
+    }
 }

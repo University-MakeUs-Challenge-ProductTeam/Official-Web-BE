@@ -25,8 +25,6 @@ public class CentralStaffQueryServiceImpl implements CentralStaffQueryService {
     @Override
     public CentralStaffResponseDTO.CentralStaffListDTO getCentralStaffList(Integer generation, Long cursor, Integer take) {
 
-        log.info("들어옴");
-
         Pageable pageable = PageRequest.of(0, take, Sort.by("id").ascending());
         Slice<CentralStaff> centralStaffSlice = centralStaffRepository.findByGenerationWithPageable(
                 generation, cursor, pageable
@@ -36,7 +34,6 @@ public class CentralStaffQueryServiceImpl implements CentralStaffQueryService {
                 ? centralStaffSlice.getContent().get(centralStaffSlice.getContent().size() - 1).getId()
                 : null;
 
-        log.info("곧나감");
         return CentralStaffConverter.toCentralStaffListDTO(centralStaffSlice, nextCursor);
     }
 }
