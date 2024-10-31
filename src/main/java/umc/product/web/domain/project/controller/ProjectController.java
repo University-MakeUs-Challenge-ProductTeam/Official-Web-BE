@@ -24,10 +24,10 @@ public class ProjectController {
     private final ProjectQueryService projectQueryService;
 
     @GetMapping("/released")
-    @Operation(summary = "실출시된 프로젝트 조회", description = "커서 초기값은 0 입니다.")
+    @Operation(summary = "실출시된 프로젝트 조회", description = "page 초기값은 0 입니다.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "COMMON200", description = "성공입니다."),
-            @ApiResponse(responseCode = "PAGE_003", description = "page 값이 유효하지 않습니다."),
+            @ApiResponse(responseCode = "PAGE_003", description = "page 값이 유효하지 않습니다. page 초기값은 0 입니다."),
             @ApiResponse(responseCode = "PAGE_004", description = "size 값이 유효하지 않습니다.")})
     public BaseResponse<ProjectResponseDTO.ReleasedProjectListDTO> getReleasedProjects(
             @CheckPageValidation @RequestParam(name = "page") int page,
@@ -36,10 +36,10 @@ public class ProjectController {
     }
 
     @GetMapping("/umc")
-    @Operation(summary = "UMC 프로젝트 조회", description = "커서 초기값은 0 입니다.")
+    @Operation(summary = "UMC 프로젝트 조회", description = "page 초기값은 0 입니다.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "COMMON200", description = "성공입니다."),
-            @ApiResponse(responseCode = "PAGE_003", description = "page 값이 유효하지 않습니다."),
+            @ApiResponse(responseCode = "PAGE_003", description = "page 값이 유효하지 않습니다. page 초기값은 0 입니다."),
             @ApiResponse(responseCode = "PAGE_004", description = "size 값이 유효하지 않습니다.")})
     public BaseResponse<ProjectResponseDTO.UMCProjectListDTO> getUMCProjects(
             @RequestParam(name = "generation", required = false) Integer generation,

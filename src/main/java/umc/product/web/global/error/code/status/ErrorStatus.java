@@ -24,7 +24,7 @@ public enum ErrorStatus implements BaseErrorCode {
     // Page 에러
     NOT_VALID_CURSOR(HttpStatus.BAD_REQUEST, "PAGE_001", "커서 값이 유효하지 않습니다. 초기값은 0 입니다."),
     NOT_VALID_TAKE(HttpStatus.BAD_REQUEST, "PAGE_002", "take 값이 유효하지 않습니다."),
-    NOT_VALID_PAGE(HttpStatus.BAD_REQUEST, "PAGE_003", "page 값이 유효하지 않습니다."),
+    NOT_VALID_PAGE(HttpStatus.BAD_REQUEST, "PAGE_003", "page 값이 유효하지 않습니다. page 초기값은 0 입니다."),
     NOT_VALID_SIZE(HttpStatus.BAD_REQUEST, "PAGE_004", "size 값이 유효하지 않습니다."),
 
     // Sponsor 에러

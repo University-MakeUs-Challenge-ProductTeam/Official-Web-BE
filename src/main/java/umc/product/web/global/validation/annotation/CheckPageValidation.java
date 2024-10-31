@@ -11,7 +11,7 @@ import java.lang.annotation.*;
 @Target({ElementType.METHOD, ElementType.FIELD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface CheckPageValidation {
-    String message() default "page 값이 유효하지 않습니다.";
+    String message() default "page 값이 유효하지 않습니다. page 초기값은 0 입니다.";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 }

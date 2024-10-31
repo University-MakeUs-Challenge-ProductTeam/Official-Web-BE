@@ -26,7 +26,7 @@ public class CentralStaffController {
     private final CentralStaffQueryService centralStaffQueryService;
 
     @GetMapping("")
-    @Operation(summary = "중앙 운영진 리스트 조회", description = "커서 초기값은 0 입니다.")
+    @Operation(summary = "중앙 운영진 리스트 조회", description = "page 초기값은 0 입니다.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "COMMON200", description = "성공입니다."),
             @ApiResponse(responseCode = "PAGE_003", description = "page 값이 유효하지 않습니다."),
