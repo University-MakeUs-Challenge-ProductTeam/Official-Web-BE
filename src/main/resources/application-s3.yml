@@ -6,6 +6,6 @@ cloud:
       accessKey: ${S3_ACCESS_KEY}
       secretKey: ${S3_SECRET_KEY}
     region:
-      static: ap-northeast-2
+      static: us-east-2
     stack:
       auto: false

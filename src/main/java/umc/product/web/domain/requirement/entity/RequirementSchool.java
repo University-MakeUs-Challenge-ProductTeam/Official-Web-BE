@@ -21,6 +21,9 @@ public class RequirementSchool extends BaseEntity {
     @Column(name = "name", nullable = false)
     private String name;
 
+    @Column(name = "instagram_account")
+    private String instagramAccount;
+
     @Column(name = "submission_start")
     private LocalDate submissionStart;
 

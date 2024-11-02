@@ -17,8 +17,4 @@ public class ParticipateSchool extends BaseEntity {
     private Long id;
 
     private String name;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "project_id")
-    private Project project;
 }

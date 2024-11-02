@@ -1,21 +1,19 @@
 package umc.product.web.domain.requirement.service.impl;
 
-import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import umc.product.web.domain.requirement.converter.RequirementConverter;
 import umc.product.web.domain.requirement.dto.RequirementResponseDTO;
 import umc.product.web.domain.requirement.entity.RequirementPart;
 import umc.product.web.domain.requirement.entity.RequirementSchool;
-import umc.product.web.domain.requirement.entity.Staff;
+import umc.product.web.domain.requirement.entity.SchoolStaff;
 import umc.product.web.domain.requirement.repository.RequirementPartRepository;
 import umc.product.web.domain.requirement.repository.RequirementSchoolRepository;
-import umc.product.web.domain.requirement.repository.StaffRepository;
+import umc.product.web.domain.requirement.repository.SchoolStaffRepository;
 import umc.product.web.domain.requirement.service.RequirementQueryService;
 import umc.product.web.global.error.code.handler.RequirementHandler;
 import umc.product.web.global.error.code.status.ErrorStatus;
 
-import java.lang.reflect.Parameter;
 import java.util.List;
 
 @Service
@@ -23,7 +21,7 @@ import java.util.List;
 public class RequirementServiceImpl implements RequirementQueryService {
 
     private final RequirementSchoolRepository requirementSchoolRepository;
-    private final StaffRepository staffRepository;
+    private final SchoolStaffRepository schoolStaffRepository;
     private final RequirementPartRepository requirementPartRepository;
 
 
@@ -34,7 +32,7 @@ public class RequirementServiceImpl implements RequirementQueryService {
 
         List<RequirementPart> requirementPartList = requirementPartRepository.findByRequirementSchool(requirementSchool);
 
-        List<Staff> staffList = staffRepository.findByRequirementSchool(requirementSchool);
+        List<SchoolStaff> staffList = schoolStaffRepository.findByRequirementSchool(requirementSchool);
 
         List<RequirementResponseDTO.StaffDTO> staffDTOList = staffList.stream().map(RequirementConverter::toStaffDTO).toList();
 
@@ -42,6 +40,6 @@ public class RequirementServiceImpl implements RequirementQueryService {
 
         RequirementResponseDTO.RecruitmentScheduleDTO recruitmentScheduleDTO = RequirementConverter.toRecruitmentScheduleDTO(requirementSchool);
 
-        return RequirementConverter.toRequirementInfoDTO(requirementSchool.getName(), requirementPartDTOList, recruitmentScheduleDTO, staffDTOList);
+        return RequirementConverter.toRequirementInfoDTO(requirementSchool.getName(), requirementSchool.getInstagramAccount(), requirementPartDTOList, recruitmentScheduleDTO, staffDTOList);
     }
 }

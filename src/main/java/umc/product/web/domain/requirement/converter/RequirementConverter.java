@@ -3,7 +3,7 @@ package umc.product.web.domain.requirement.converter;
 import umc.product.web.domain.requirement.dto.RequirementResponseDTO;
 import umc.product.web.domain.requirement.entity.RequirementPart;
 import umc.product.web.domain.requirement.entity.RequirementSchool;
-import umc.product.web.domain.requirement.entity.Staff;
+import umc.product.web.domain.requirement.entity.SchoolStaff;
 
 import java.util.List;
 
@@ -11,12 +11,14 @@ public class RequirementConverter {
 
     public static RequirementResponseDTO.RequirementInfoDTO toRequirementInfoDTO(
             String schoolName,
+            String instagramAccount,
             List<RequirementResponseDTO.RequirementPartDTO> requirementPartDTOList,
             RequirementResponseDTO.RecruitmentScheduleDTO recruitmentScheduleDTO,
             List<RequirementResponseDTO.StaffDTO> staffDTOList
     ) {
         return RequirementResponseDTO.RequirementInfoDTO.builder()
                 .name(schoolName)
+                .instagramAccount(instagramAccount)
                 .requirementPartDTOList(requirementPartDTOList)
                 .recruitmentScheduleDTO(recruitmentScheduleDTO)
                 .staffDTOList(staffDTOList)
@@ -35,11 +37,11 @@ public class RequirementConverter {
                 .build();
     }
 
-    public static RequirementResponseDTO.StaffDTO toStaffDTO(Staff staff) {
+    public static RequirementResponseDTO.StaffDTO toStaffDTO(SchoolStaff schoolStaff) {
         return RequirementResponseDTO.StaffDTO.builder()
-                .name(staff.getName())
-                .role(staff.getRole())
-                .nickname(staff.getNickname())
+                .name(schoolStaff.getName())
+                .role(schoolStaff.getRole())
+                .nickname(schoolStaff.getNickname())
                 .build();
     }
 

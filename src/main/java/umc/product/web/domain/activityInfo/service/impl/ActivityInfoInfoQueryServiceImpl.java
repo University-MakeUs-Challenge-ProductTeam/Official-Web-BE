@@ -24,7 +24,7 @@ public class ActivityInfoInfoQueryServiceImpl implements ActivityInfoQueryServic
     @Override
     public ActivityInfoResponseDTO.ActivityInfoDetailDTO getActivityInfoDetail() {
 
-        ActivityInfo activityInfo = activityInfoRepository.findTopByOrderByGenerationDesc()
+        ActivityInfo activityInfo = activityInfoRepository.findTopByOrderByCreatedAtDesc()
                 .orElseThrow(() -> new ActivityHandler(ACTIVITY_INFO_NOT_FOUND));
 
         return ActivityInfoInfoConverter.activityInfoDetailDTO(activityInfo);

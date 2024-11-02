@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import lombok.*;
 import umc.product.web.global.common.BaseEntity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Getter
 @Builder
@@ -25,12 +28,18 @@ public class CentralStaff extends BaseEntity {
     @Column(name = "role", nullable = false)
     private String role;
 
-    @Column(name = "school", nullable = false)
+    @Column(name = "school")
     private String school;
 
-    @Column(name = "commitment", nullable = false)
-    private String commitment;
+    @Column(name = "introduction")
+    private String introduction;
 
-    @Column(name = "profile_image")
-    private String profileImage;
+    @Column(name = "profile_image_url")
+    private String profileImageUrl;
+
+    @Column(name = "generation")
+    private Integer generation;
+
+    @OneToMany(mappedBy = "centralStaff", fetch = FetchType.LAZY)
+    private List<ProfileLink> profileLinkList = new ArrayList<>();
 }

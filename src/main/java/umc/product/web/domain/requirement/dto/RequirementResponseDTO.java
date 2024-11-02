@@ -20,6 +20,7 @@ public class RequirementResponseDTO {
     @AllArgsConstructor
     public static class RequirementInfoDTO {
         private String name;
+        private String instagramAccount;
         private RecruitmentScheduleDTO recruitmentScheduleDTO;
         private List<RequirementPartDTO> requirementPartDTOList;
         private List<StaffDTO> staffDTOList;
