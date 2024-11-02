@@ -86,4 +86,11 @@ public class ProjectQueryServiceImpl implements ProjectQueryService {
         List<Platform> platformList = platformRepository.findAll();
         return ProjectConverter.toGetPlatformListDTO(platformList);
     }
+
+    @Override
+    public ProjectResponseDTO.GetTotalProjectListDTO getTotalProjectList() {
+
+        List<Project> projectList = projectRepository.findAllByOrderByGenerationDesc();
+        return ProjectConverter.toGetTotalProjectListDTO(projectList);
+    }
 }

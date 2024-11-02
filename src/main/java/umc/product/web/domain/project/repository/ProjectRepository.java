@@ -39,4 +39,6 @@ public interface ProjectRepository extends JpaRepository<Project, Long> {
 
     @Query("SELECT DISTINCT p.generation FROM Project p ORDER BY p.generation")
     List<Integer> findDistinctGenerationList();
+
+    List<Project> findAllByOrderByGenerationDesc();
 }
