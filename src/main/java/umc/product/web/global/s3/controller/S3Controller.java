@@ -6,10 +6,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import umc.product.web.global.common.BaseResponse;
 import umc.product.web.global.s3.dto.S3Request.*;
 import umc.product.web.global.s3.dto.S3Response.*;
@@ -28,7 +25,7 @@ public class S3Controller {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "COMMON200", description = "성공입니다.")
     })
-    @GetMapping("/presigned/upload")
+    @PostMapping("/presigned/upload")
     public BaseResponse<PresignedUrlToUploadResponse> getPresignedUrlToUpload(
             @RequestBody GetPresignedUrlRequest request
     ) {
@@ -39,7 +36,7 @@ public class S3Controller {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "COMMON200", description = "성공입니다.")
     })
-    @GetMapping("/presigned/upload/files")
+    @PostMapping("/presigned/upload/files")
     public BaseResponse<PresignedUrlListToUploadResponse> getPresignedUrListlToUpload(
             @RequestBody GetPresignedUrlListRequest request
     ) {
