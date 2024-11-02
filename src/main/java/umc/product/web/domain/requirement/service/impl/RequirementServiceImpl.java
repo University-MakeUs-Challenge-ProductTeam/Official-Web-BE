@@ -40,6 +40,6 @@ public class RequirementServiceImpl implements RequirementQueryService {
 
         RequirementResponseDTO.RecruitmentScheduleDTO recruitmentScheduleDTO = RequirementConverter.toRecruitmentScheduleDTO(requirementSchool);
 
-        return RequirementConverter.toRequirementInfoDTO(requirementSchool.getName(), requirementPartDTOList, recruitmentScheduleDTO, staffDTOList);
+        return RequirementConverter.toRequirementInfoDTO(requirementSchool.getName(), requirementSchool.getInstagramAccount(), requirementPartDTOList, recruitmentScheduleDTO, staffDTOList);
     }
 }
