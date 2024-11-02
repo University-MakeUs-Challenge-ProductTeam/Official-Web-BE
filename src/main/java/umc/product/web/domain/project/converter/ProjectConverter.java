@@ -121,4 +121,24 @@ public class ProjectConverter {
                 .platformList(list)
                 .build();
     }
+
+    public static ProjectResponseDTO.ProjectDTO toProjectDTO(Project project) {
+        return ProjectResponseDTO.ProjectDTO.builder()
+                .projectId(project.getId())
+                .projectName(project.getName())
+                .slogan(project.getSlogan())
+                .generation(project.getGeneration())
+                .projectLandingImageUrl(project.getProjectLandingImageUrl())
+                .build();
+    }
+
+    public static ProjectResponseDTO.GetTotalProjectListDTO toGetTotalProjectListDTO(List<Project> projectList) {
+        List<ProjectResponseDTO.ProjectDTO> list = projectList.stream()
+                .map(ProjectConverter::toProjectDTO)
+                .toList();
+
+        return ProjectResponseDTO.GetTotalProjectListDTO.builder()
+                .projectList(list)
+                .build();
+    }
 }
