@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import umc.product.web.domain.centralStaff.dto.CentralStaffResponseDTO;
 import umc.product.web.domain.centralStaff.service.CentralStaffQueryService;
+import umc.product.web.domain.project.dto.ProjectResponseDTO;
 import umc.product.web.global.common.BaseResponse;
 import umc.product.web.global.validation.annotation.CheckCursorValidation;
 import umc.product.web.global.validation.annotation.CheckTakeValidation;
@@ -19,7 +20,7 @@ import umc.product.web.global.validation.annotation.CheckTakeValidation;
 @Validated
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/central-staff")
+@RequestMapping("/api/central-staffs")
 @Tag(name = "중앙 운영진 API")
 public class CentralStaffController {
 
@@ -38,5 +39,14 @@ public class CentralStaffController {
             @CheckTakeValidation @RequestParam(name = "take") Integer take
     ) {
         return BaseResponse.onSuccess(centralStaffQueryService.getCentralStaffList(generation, cursor, take));
+    }
+
+    @GetMapping("/generations")
+    @Operation(summary = "중앙 운영진 기수 조회", description = "중앙 운영진 기수 리스트를 조회합니다.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "COMMON200", description = "성공입니다.")
+    })
+    public BaseResponse<CentralStaffResponseDTO.GetGenerationListDTO> getGenerationList() {
+        return BaseResponse.onSuccess(centralStaffQueryService.getGenerationList());
     }
 }

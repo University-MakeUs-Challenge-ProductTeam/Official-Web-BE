@@ -43,4 +43,12 @@ public class CentralStaffResponseDTO {
         private Boolean hasNext;
         private Long nextCursor;
     }
+
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class GetGenerationListDTO {
+        private List<Integer> generationList;
+    }
 }

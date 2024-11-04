@@ -14,6 +14,8 @@ import umc.product.web.domain.centralStaff.entity.CentralStaff;
 import umc.product.web.domain.centralStaff.repository.CentralStaffRepository;
 import umc.product.web.domain.centralStaff.service.CentralStaffQueryService;
 
+import java.util.List;
+
 @Slf4j
 @RequiredArgsConstructor
 @Service
@@ -35,5 +37,12 @@ public class CentralStaffQueryServiceImpl implements CentralStaffQueryService {
                 : null;
 
         return CentralStaffConverter.toCentralStaffListDTO(centralStaffSlice, nextCursor);
+    }
+
+    @Override
+    public CentralStaffResponseDTO.GetGenerationListDTO getGenerationList() {
+
+        List<Integer> generationList = centralStaffRepository.findDistinctGenerationList();
+        return CentralStaffConverter.toGetGenerationListDTO(generationList);
     }
 }
