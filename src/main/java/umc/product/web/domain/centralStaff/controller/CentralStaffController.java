@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import umc.product.web.domain.centralStaff.dto.CentralStaffResponseDTO;
 import umc.product.web.domain.centralStaff.service.CentralStaffQueryService;
-import umc.product.web.domain.project.dto.ProjectResponseDTO;
 import umc.product.web.global.common.BaseResponse;
 import umc.product.web.global.validation.annotation.CheckCursorValidation;
 import umc.product.web.global.validation.annotation.CheckTakeValidation;

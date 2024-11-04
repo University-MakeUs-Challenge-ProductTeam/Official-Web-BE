@@ -13,7 +13,7 @@ public class UMCResponseDTO {
     @Getter
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class ParticipateSchoolDTO {
+    public static class CurrentParticipatingSchool {
         private Long participateSchoolId;
         private String schoolName;
     }
@@ -22,8 +22,8 @@ public class UMCResponseDTO {
     @Getter
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class GetParticipateSchoolList {
+    public static class GetCurrentParticipatingSchoolList {
         private Integer totalSchoolCount;
-        private List<ParticipateSchoolDTO> participateSchoolList;
+        private List<CurrentParticipatingSchool> participateSchoolList;
     }
 }

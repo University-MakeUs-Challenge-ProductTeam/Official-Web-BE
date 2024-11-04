@@ -23,11 +23,11 @@ public class UMCController {
     private final UMCQueryService umcQueryService;
 
     @GetMapping("/schools")
-    @Operation(summary = "참여 학교 리스트 조회", description = "")
+    @Operation(summary = "참여 학교 리스트 조회", description = "현재 기수에 참여하는 전체 학교를 조회합니다.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "COMMON200", description = "성공입니다.")
     })
-    public BaseResponse<UMCResponseDTO.GetParticipateSchoolList> getParticipateSchoolList() {
-        return BaseResponse.onSuccess(umcQueryService.getParticipateSchoolList());
+    public BaseResponse<UMCResponseDTO.GetCurrentParticipatingSchoolList> getCurrentParticipatingSchoolList() {
+        return BaseResponse.onSuccess(umcQueryService.getCurrentParticipatingSchoolList());
     }
 }
