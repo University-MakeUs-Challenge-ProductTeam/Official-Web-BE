@@ -80,7 +80,7 @@ public class ProjectController {
         return BaseResponse.onSuccess(projectQueryService.getPlatformList());
     }
 
-    @GetMapping("/total")
+    @GetMapping("")
     @Operation(summary = "전체 프로젝트 조회", description = "UMC 전체 프로젝트를 조회합니다. 최근 기수 프로젝트부터 조회합니다.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "COMMON200", description = "성공입니다.")

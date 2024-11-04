@@ -22,7 +22,7 @@ public class UMCController {
 
     private final UMCQueryService umcQueryService;
 
-    @GetMapping("/schools/list")
+    @GetMapping("/schools")
     @Operation(summary = "참여 학교 리스트 조회", description = "")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "COMMON200", description = "성공입니다.")
