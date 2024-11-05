@@ -40,8 +40,12 @@ public class CentralStaffResponseDTO {
     @AllArgsConstructor
     public static class CentralStaffListDTO {
         private List<CentralStaffDTO> centralStaffList;
+        private Boolean isFirst;
         private Boolean hasNext;
-        private Long nextCursor;
+        private Integer currentPage;
+        private Integer pageSize;
+        private Long totalElements;
+        private Integer totalPages;
     }
 
     @Builder

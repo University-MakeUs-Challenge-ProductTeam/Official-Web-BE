@@ -1,6 +1,6 @@
 package umc.product.web.domain.project.converter;
 
-import org.springframework.data.domain.Slice;
+import org.springframework.data.domain.Page;
 import umc.product.web.domain.project.dto.ProjectResponseDTO;
 import umc.product.web.domain.project.entity.*;
 import umc.product.web.domain.project.entity.enums.PlatformName;
@@ -18,22 +18,27 @@ public class ProjectConverter {
         return ProjectResponseDTO.ReleasedProjectDTO.builder()
                 .projectId(project.getId())
                 .projectName(project.getName())
+                .generation(project.getGeneration())
                 .slogan(project.getSlogan())
                 .projectLogoImageUrl(project.getProjectLogoImageUrl() != null && !project.getProjectLogoImageUrl().isEmpty() ? project.getProjectLogoImageUrl() : null)
                 .platFormNameList(platformNameList)
                 .build();
     }
 
-    public static ProjectResponseDTO.ReleasedProjectListDTO toReleasedProjectListDTO(Slice<Project> projectSlice, Long nextCursor) {
+    public static ProjectResponseDTO.ReleasedProjectListDTO toReleasedProjectListDTO(Page<Project> projectPage) {
 
-        List<ProjectResponseDTO.ReleasedProjectDTO> releasedProjectDTOList = projectSlice.stream()
+        List<ProjectResponseDTO.ReleasedProjectDTO> releasedProjectDTOList = projectPage.stream()
                 .map(ProjectConverter::toReleasedProjectDTO)
                 .toList();
 
         return ProjectResponseDTO.ReleasedProjectListDTO.builder()
                 .releasedProjectDTOList(releasedProjectDTOList)
-                .hasNext(projectSlice.hasNext())
-                .nextCursor(nextCursor)
+                .isFirst(projectPage.isFirst())
+                .hasNext(projectPage.hasNext())
+                .currentPage(projectPage.getNumber())
+                .pageSize(projectPage.getSize())
+                .totalElements(projectPage.getTotalElements())
+                .totalPages(projectPage.getTotalPages())
                 .build();
     }
 
@@ -46,22 +51,27 @@ public class ProjectConverter {
         return ProjectResponseDTO.UMCProjectDTO.builder()
                 .projectId(project.getId())
                 .projectName(project.getName())
+                .generation(project.getGeneration())
                 .slogan(project.getSlogan())
                 .projectLandingImageUrl(project.getProjectLandingImageUrl() != null && !project.getProjectLandingImageUrl().isEmpty() ? project.getProjectLandingImageUrl() : null)
                 .platFormNameList(platformNameList)
                 .build();
     }
 
-    public static ProjectResponseDTO.UMCProjectListDTO toUMCProjectListDTO(Slice<Project> projectSlice, Long nextCursor) {
+    public static ProjectResponseDTO.UMCProjectListDTO toUMCProjectListDTO(Page<Project> projectPage) {
 
-        List<ProjectResponseDTO.UMCProjectDTO> umcProjectDTOList = projectSlice.stream()
+        List<ProjectResponseDTO.UMCProjectDTO> umcProjectDTOList = projectPage.stream()
                 .map(ProjectConverter::toUMCProjectDTO)
                 .toList();
 
         return ProjectResponseDTO.UMCProjectListDTO.builder()
                 .umcProjectList(umcProjectDTOList)
-                .hasNext(projectSlice.hasNext())
-                .nextCursor(nextCursor)
+                .isFirst(projectPage.isFirst())
+                .hasNext(projectPage.hasNext())
+                .currentPage(projectPage.getNumber())
+                .pageSize(projectPage.getSize())
+                .totalElements(projectPage.getTotalElements())
+                .totalPages(projectPage.getTotalPages())
                 .build();
     }
 

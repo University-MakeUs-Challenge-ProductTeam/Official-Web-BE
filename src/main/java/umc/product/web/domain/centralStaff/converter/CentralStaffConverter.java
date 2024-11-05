@@ -1,6 +1,6 @@
 package umc.product.web.domain.centralStaff.converter;
 
-import org.springframework.data.domain.Slice;
+import org.springframework.data.domain.Page;
 import umc.product.web.domain.centralStaff.dto.CentralStaffResponseDTO;
 import umc.product.web.domain.centralStaff.entity.CentralStaff;
 import umc.product.web.domain.centralStaff.entity.ProfileLink;
@@ -34,15 +34,21 @@ public class CentralStaffConverter {
                 .build();
     }
 
-    public static CentralStaffResponseDTO.CentralStaffListDTO toCentralStaffListDTO(Slice<CentralStaff> slice, Long nextCursor) {
-        List<CentralStaffResponseDTO.CentralStaffDTO> list = slice.stream()
+    public static CentralStaffResponseDTO.CentralStaffListDTO toCentralStaffListDTO(Page<CentralStaff> page) {
+        List<CentralStaffResponseDTO.CentralStaffDTO> list = page.stream()
                 .map(CentralStaffConverter::toCentralStaffDTO)
                 .toList();
 
         return CentralStaffResponseDTO.CentralStaffListDTO.builder()
                 .centralStaffList(list)
-                .hasNext(slice.hasNext())
-                .nextCursor(nextCursor)
+                .isFirst(page.isFirst())
+                .hasNext(page.hasNext())
+                .isFirst(page.isFirst())
+                .hasNext(page.hasNext())
+                .currentPage(page.getNumber())
+                .pageSize(page.getSize())
+                .totalElements(page.getTotalElements())
+                .totalPages(page.getTotalPages())
                 .build();
     }
 

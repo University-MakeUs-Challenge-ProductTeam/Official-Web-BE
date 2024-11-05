@@ -2,8 +2,8 @@ package umc.product.web.domain.centralStaff.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import umc.product.web.domain.centralStaff.converter.CentralStaffConverter;
@@ -26,14 +26,10 @@ public class CentralStaffQueryServiceImpl implements CentralStaffQueryService {
     public CentralStaffResponseDTO.CentralStaffListDTO getCentralStaffList(Integer generation, int page, int size) {
 
         PageRequest pageRequest = PageRequest.of(page, size);
-        Slice<CentralStaff> centralStaffSlice = centralStaffRepository.findByGenerationWithPageable(
+        Page<CentralStaff> centralStaffPage = centralStaffRepository.findByGenerationWithPageable(
                 generation, pageRequest);
 
-        Long nextCursor = centralStaffSlice.hasNext() && !centralStaffSlice.getContent().isEmpty()
-                ? centralStaffSlice.getContent().get(centralStaffSlice.getContent().size() - 1).getId()
-                : null;
-
-        return CentralStaffConverter.toCentralStaffListDTO(centralStaffSlice, nextCursor);
+        return CentralStaffConverter.toCentralStaffListDTO(centralStaffPage);
     }
 
     @Override
