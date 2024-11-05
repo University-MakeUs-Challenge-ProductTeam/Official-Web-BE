@@ -1,26 +1,26 @@
 package umc.product.web.domain.umc.converter;
 
-import umc.product.web.domain.project.entity.ParticipateSchool;
+import umc.product.web.domain.requirement.entity.RequirementSchool;
 import umc.product.web.domain.umc.dto.UMCResponseDTO;
 
 import java.util.List;
 
 public class UMCConverter {
 
-    public static UMCResponseDTO.ParticipateSchoolDTO toParticipateSchoolDTO(ParticipateSchool participateSchool) {
-        return UMCResponseDTO.ParticipateSchoolDTO.builder()
-                .participateSchoolId(participateSchool.getId())
-                .schoolName(participateSchool.getName())
+    public static UMCResponseDTO.CurrentParticipatingSchool toCurrentParticipatingSchool(RequirementSchool requirementSchool) {
+        return UMCResponseDTO.CurrentParticipatingSchool.builder()
+                .participateSchoolId(requirementSchool.getId())
+                .schoolName(requirementSchool.getName())
                 .build();
     }
 
-    public static UMCResponseDTO.GetParticipateSchoolList toGetParticipateSchoolListDTO(List<ParticipateSchool> participateSchoolList) {
-        List<UMCResponseDTO.ParticipateSchoolDTO> list = participateSchoolList.stream()
-                .map(UMCConverter::toParticipateSchoolDTO)
+    public static UMCResponseDTO.GetCurrentParticipatingSchoolList toGetCurrentParticipatingSchoolList(List<RequirementSchool> requirementSchoolList) {
+        List<UMCResponseDTO.CurrentParticipatingSchool> list = requirementSchoolList.stream()
+                .map(UMCConverter::toCurrentParticipatingSchool)
                 .toList();
 
-        return UMCResponseDTO.GetParticipateSchoolList.builder()
-                .totalSchoolCount(participateSchoolList.size())
+        return UMCResponseDTO.GetCurrentParticipatingSchoolList.builder()
+                .totalSchoolCount(requirementSchoolList.size())
                 .participateSchoolList(list)
                 .build();
     }

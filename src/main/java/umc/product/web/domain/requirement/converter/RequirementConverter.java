@@ -11,12 +11,14 @@ public class RequirementConverter {
 
     public static RequirementResponseDTO.RequirementInfoDTO toRequirementInfoDTO(
             String schoolName,
+            String instagramAccount,
             List<RequirementResponseDTO.RequirementPartDTO> requirementPartDTOList,
             RequirementResponseDTO.RecruitmentScheduleDTO recruitmentScheduleDTO,
             List<RequirementResponseDTO.StaffDTO> staffDTOList
     ) {
         return RequirementResponseDTO.RequirementInfoDTO.builder()
                 .name(schoolName)
+                .instagramAccount(instagramAccount)
                 .requirementPartDTOList(requirementPartDTOList)
                 .recruitmentScheduleDTO(recruitmentScheduleDTO)
                 .staffDTOList(staffDTOList)

@@ -109,4 +109,24 @@ public class ProjectResponseDTO {
     public static class GetPlatformListDTO {
         private List<PlatformName> platformList;
     }
+
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class ProjectDTO {
+        private Long projectId;
+        private String projectName;
+        private String slogan;
+        private Integer generation;
+        private String projectLandingImageUrl;
+    }
+
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class GetTotalProjectListDTO {
+        private List<ProjectDTO> projectList;
+    }
 }

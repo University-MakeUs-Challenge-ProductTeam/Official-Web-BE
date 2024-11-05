@@ -19,7 +19,7 @@ import umc.product.web.global.validation.annotation.CheckSizeValidation;
 @Validated
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/central-staff")
+@RequestMapping("/api/central-staffs")
 @Tag(name = "중앙 운영진 API")
 public class CentralStaffController {
 
@@ -36,5 +36,14 @@ public class CentralStaffController {
             @CheckPageValidation @RequestParam(name = "page") int page,
             @CheckSizeValidation @RequestParam(name = "size") int size) {
         return BaseResponse.onSuccess(centralStaffQueryService.getCentralStaffList(generation, page, size));
+    }
+
+    @GetMapping("/generations")
+    @Operation(summary = "중앙 운영진 기수 조회", description = "중앙 운영진 기수 리스트를 조회합니다.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "COMMON200", description = "성공입니다.")
+    })
+    public BaseResponse<CentralStaffResponseDTO.GetGenerationListDTO> getGenerationList() {
+        return BaseResponse.onSuccess(centralStaffQueryService.getGenerationList());
     }
 }

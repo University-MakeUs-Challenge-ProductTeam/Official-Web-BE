@@ -7,5 +7,5 @@ import java.util.Optional;
 
 public interface ActivityInfoRepository extends JpaRepository<ActivityInfo, Long> {
 
-//    Optional<ActivityInfo> findTopByOrderByGenerationDesc();
+    Optional<ActivityInfo> findTopByOrderByCreatedAtDesc();
 }
