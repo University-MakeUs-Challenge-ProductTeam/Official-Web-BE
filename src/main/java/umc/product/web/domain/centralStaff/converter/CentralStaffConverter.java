@@ -45,4 +45,10 @@ public class CentralStaffConverter {
                 .nextCursor(nextCursor)
                 .build();
     }
+
+    public static CentralStaffResponseDTO.GetGenerationListDTO toGetGenerationListDTO(List<Integer> generationList ) {
+        return CentralStaffResponseDTO.GetGenerationListDTO.builder()
+                .generationList(generationList)
+                .build();
+    }
 }

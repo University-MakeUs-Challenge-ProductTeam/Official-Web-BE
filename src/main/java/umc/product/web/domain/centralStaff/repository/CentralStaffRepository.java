@@ -7,6 +7,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import umc.product.web.domain.centralStaff.entity.CentralStaff;
 
+import java.util.List;
+
 public interface CentralStaffRepository extends JpaRepository<CentralStaff, Long> {
 
     @Query("SELECT cs FROM CentralStaff cs " +
@@ -17,4 +19,7 @@ public interface CentralStaffRepository extends JpaRepository<CentralStaff, Long
             @Param("generation") Integer generation,
             @Param("cursor") Long cursor,
             Pageable pageable);
+
+    @Query("SELECT DISTINCT cs.generation FROM CentralStaff cs ORDER BY cs.generation")
+    List<Integer> findDistinctGenerationList();
 }
