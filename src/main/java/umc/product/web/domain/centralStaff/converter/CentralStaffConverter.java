@@ -34,15 +34,15 @@ public class CentralStaffConverter {
                 .build();
     }
 
-    public static CentralStaffResponseDTO.CentralStaffListDTO toCentralStaffListDTO(Slice<CentralStaff> slice, Long nextCursor) {
+    public static CentralStaffResponseDTO.CentralStaffListDTO toCentralStaffListDTO(Slice<CentralStaff> slice) {
         List<CentralStaffResponseDTO.CentralStaffDTO> list = slice.stream()
                 .map(CentralStaffConverter::toCentralStaffDTO)
                 .toList();
 
         return CentralStaffResponseDTO.CentralStaffListDTO.builder()
                 .centralStaffList(list)
+                .isFirst(slice.isFirst())
                 .hasNext(slice.hasNext())
-                .nextCursor(nextCursor)
                 .build();
     }
 

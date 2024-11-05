@@ -40,11 +40,8 @@ public class ProjectQueryServiceImpl implements ProjectQueryService {
 
         PageRequest pageRequest = PageRequest.of(page, size);
         Slice<Project> projectSlice = projectRepository.findReleasedProjectsWithPlatform(pageRequest);
-        Long nextCursor = projectSlice.hasNext() && !projectSlice.getContent().isEmpty()
-                ? projectSlice.getContent().get(projectSlice.getNumberOfElements() - 1).getId()
-                : null;
 
-        return ProjectConverter.toReleasedProjectListDTO(projectSlice, nextCursor);
+        return ProjectConverter.toReleasedProjectListDTO(projectSlice);
     }
 
     @Override
@@ -52,11 +49,8 @@ public class ProjectQueryServiceImpl implements ProjectQueryService {
 
         PageRequest pageRequest = PageRequest.of(page, size);
         Slice<Project> projectSlice = projectRepository.findProjectsByGenerationAndPlatformNameWithPageable(generation, platformName, searchTerm, pageRequest);
-        Long nextCursor = projectSlice.hasNext() && !projectSlice.getContent().isEmpty()
-                ? projectSlice.getContent().get(projectSlice.getNumberOfElements() - 1).getId()
-                : null;
 
-        return ProjectConverter.toUMCProjectListDTO(projectSlice, nextCursor);
+        return ProjectConverter.toUMCProjectListDTO(projectSlice);
     }
 
     @Override

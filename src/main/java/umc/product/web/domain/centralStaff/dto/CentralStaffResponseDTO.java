@@ -40,8 +40,8 @@ public class CentralStaffResponseDTO {
     @AllArgsConstructor
     public static class CentralStaffListDTO {
         private List<CentralStaffDTO> centralStaffList;
-        private Boolean hasNext;
-        private Long nextCursor;
+        Boolean isFirst;
+        Boolean hasNext;
     }
 
     @Builder

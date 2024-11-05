@@ -19,8 +19,8 @@ public class ProjectResponseDTO {
     @AllArgsConstructor
     public static class ReleasedProjectListDTO {
         private List<ReleasedProjectDTO> releasedProjectDTOList;
-        private Boolean hasNext;
-        private Long nextCursor;
+        Boolean isFirst;
+        Boolean hasNext;
     }
 
     @Builder
@@ -30,6 +30,7 @@ public class ProjectResponseDTO {
     public static class ReleasedProjectDTO {
         private Long projectId;
         private String projectName;
+        private Integer generation;
         @Schema(description = "프로젝트 간단한 소개")
         private String slogan;
         @Schema(description = "프로젝트 로고 이미지 url")
@@ -44,8 +45,8 @@ public class ProjectResponseDTO {
     @AllArgsConstructor
     public static class UMCProjectListDTO {
         private List<UMCProjectDTO> umcProjectList;
-        private Boolean hasNext;
-        private Long nextCursor;
+        Boolean isFirst;
+        Boolean hasNext;
     }
 
     @Builder
@@ -55,6 +56,7 @@ public class ProjectResponseDTO {
     public static class UMCProjectDTO {
         private Long projectId;
         private String projectName;
+        private Integer generation;
         @Schema(description = "프로젝트 간단한 소개")
         private String slogan;
         @Schema(description = "프로젝트 랜딩 이미지 url")

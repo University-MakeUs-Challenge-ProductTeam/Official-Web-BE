@@ -29,11 +29,7 @@ public class CentralStaffQueryServiceImpl implements CentralStaffQueryService {
         Slice<CentralStaff> centralStaffSlice = centralStaffRepository.findByGenerationWithPageable(
                 generation, pageRequest);
 
-        Long nextCursor = centralStaffSlice.hasNext() && !centralStaffSlice.getContent().isEmpty()
-                ? centralStaffSlice.getContent().get(centralStaffSlice.getContent().size() - 1).getId()
-                : null;
-
-        return CentralStaffConverter.toCentralStaffListDTO(centralStaffSlice, nextCursor);
+        return CentralStaffConverter.toCentralStaffListDTO(centralStaffSlice);
     }
 
     @Override

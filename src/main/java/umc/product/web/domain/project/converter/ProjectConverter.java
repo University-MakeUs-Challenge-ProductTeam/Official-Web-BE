@@ -18,13 +18,14 @@ public class ProjectConverter {
         return ProjectResponseDTO.ReleasedProjectDTO.builder()
                 .projectId(project.getId())
                 .projectName(project.getName())
+                .generation(project.getGeneration())
                 .slogan(project.getSlogan())
                 .projectLogoImageUrl(project.getProjectLogoImageUrl() != null && !project.getProjectLogoImageUrl().isEmpty() ? project.getProjectLogoImageUrl() : null)
                 .platFormNameList(platformNameList)
                 .build();
     }
 
-    public static ProjectResponseDTO.ReleasedProjectListDTO toReleasedProjectListDTO(Slice<Project> projectSlice, Long nextCursor) {
+    public static ProjectResponseDTO.ReleasedProjectListDTO toReleasedProjectListDTO(Slice<Project> projectSlice) {
 
         List<ProjectResponseDTO.ReleasedProjectDTO> releasedProjectDTOList = projectSlice.stream()
                 .map(ProjectConverter::toReleasedProjectDTO)
@@ -32,8 +33,8 @@ public class ProjectConverter {
 
         return ProjectResponseDTO.ReleasedProjectListDTO.builder()
                 .releasedProjectDTOList(releasedProjectDTOList)
+                .isFirst(projectSlice.isFirst())
                 .hasNext(projectSlice.hasNext())
-                .nextCursor(nextCursor)
                 .build();
     }
 
@@ -46,13 +47,14 @@ public class ProjectConverter {
         return ProjectResponseDTO.UMCProjectDTO.builder()
                 .projectId(project.getId())
                 .projectName(project.getName())
+                .generation(project.getGeneration())
                 .slogan(project.getSlogan())
                 .projectLandingImageUrl(project.getProjectLandingImageUrl() != null && !project.getProjectLandingImageUrl().isEmpty() ? project.getProjectLandingImageUrl() : null)
                 .platFormNameList(platformNameList)
                 .build();
     }
 
-    public static ProjectResponseDTO.UMCProjectListDTO toUMCProjectListDTO(Slice<Project> projectSlice, Long nextCursor) {
+    public static ProjectResponseDTO.UMCProjectListDTO toUMCProjectListDTO(Slice<Project> projectSlice) {
 
         List<ProjectResponseDTO.UMCProjectDTO> umcProjectDTOList = projectSlice.stream()
                 .map(ProjectConverter::toUMCProjectDTO)
@@ -60,8 +62,8 @@ public class ProjectConverter {
 
         return ProjectResponseDTO.UMCProjectListDTO.builder()
                 .umcProjectList(umcProjectDTOList)
+                .isFirst(projectSlice.isFirst())
                 .hasNext(projectSlice.hasNext())
-                .nextCursor(nextCursor)
                 .build();
     }
 
