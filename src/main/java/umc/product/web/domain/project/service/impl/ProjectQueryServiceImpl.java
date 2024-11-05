@@ -2,8 +2,8 @@ package umc.product.web.domain.project.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import umc.product.web.domain.project.converter.ProjectConverter;
@@ -39,18 +39,18 @@ public class ProjectQueryServiceImpl implements ProjectQueryService {
     public ProjectResponseDTO.ReleasedProjectListDTO getReleasedProjects(int page, int size) {
 
         PageRequest pageRequest = PageRequest.of(page, size);
-        Slice<Project> projectSlice = projectRepository.findReleasedProjectsWithPlatform(pageRequest);
+        Page<Project> projectPage = projectRepository.findReleasedProjectsWithPlatform(pageRequest);
 
-        return ProjectConverter.toReleasedProjectListDTO(projectSlice);
+        return ProjectConverter.toReleasedProjectListDTO(projectPage);
     }
 
     @Override
     public ProjectResponseDTO.UMCProjectListDTO getUMCProjects(Integer generation, PlatformName platformName, String searchTerm, int page, int size) {
 
         PageRequest pageRequest = PageRequest.of(page, size);
-        Slice<Project> projectSlice = projectRepository.findProjectsByGenerationAndPlatformNameWithPageable(generation, platformName, searchTerm, pageRequest);
+        Page<Project> projectPage = projectRepository.findProjectsByGenerationAndPlatformNameWithPageable(generation, platformName, searchTerm, pageRequest);
 
-        return ProjectConverter.toUMCProjectListDTO(projectSlice);
+        return ProjectConverter.toUMCProjectListDTO(projectPage);
     }
 
     @Override

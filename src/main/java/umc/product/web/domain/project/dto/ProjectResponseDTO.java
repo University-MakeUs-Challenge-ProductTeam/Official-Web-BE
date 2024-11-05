@@ -19,8 +19,12 @@ public class ProjectResponseDTO {
     @AllArgsConstructor
     public static class ReleasedProjectListDTO {
         private List<ReleasedProjectDTO> releasedProjectDTOList;
-        Boolean isFirst;
-        Boolean hasNext;
+        private Boolean isFirst;
+        private Boolean hasNext;
+        private Integer currentPage;
+        private Integer pageSize;
+        private Long totalElements;
+        private Integer totalPages;
     }
 
     @Builder
@@ -45,8 +49,12 @@ public class ProjectResponseDTO {
     @AllArgsConstructor
     public static class UMCProjectListDTO {
         private List<UMCProjectDTO> umcProjectList;
-        Boolean isFirst;
-        Boolean hasNext;
+        private Boolean isFirst;
+        private Boolean hasNext;
+        private Integer currentPage;
+        private Integer pageSize;
+        private Long totalElements;
+        private Integer totalPages;
     }
 
     @Builder

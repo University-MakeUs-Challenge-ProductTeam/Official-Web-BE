@@ -1,7 +1,7 @@
 package umc.product.web.domain.project.repository;
 
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Slice;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -17,7 +17,7 @@ public interface ProjectRepository extends JpaRepository<Project, Long> {
             "JOIN FETCH pp.platform " +
             "WHERE p.isReleased = true " +
             "ORDER BY p.generation DESC, p.id DESC ")
-    Slice<Project> findReleasedProjectsWithPlatform(Pageable pageable);
+    Page<Project> findReleasedProjectsWithPlatform(Pageable pageable);
 
     @Query("SELECT DISTINCT p FROM Project p " +
             "JOIN p.projectPlatforms pp " +
@@ -26,7 +26,7 @@ public interface ProjectRepository extends JpaRepository<Project, Long> {
             "AND (:platformName IS NULL OR pf.platformName = :platformName) " +
             "AND (:searchTerm IS NULL OR p.name LIKE %:searchTerm%) " +
             "ORDER BY p.generation DESC, p.id DESC ")
-    Slice<Project> findProjectsByGenerationAndPlatformNameWithPageable(
+    Page<Project> findProjectsByGenerationAndPlatformNameWithPageable(
             @Param("generation") Integer generation,
             @Param("platformName") PlatformName platformName,
             @Param("searchTerm") String searchTerm,
