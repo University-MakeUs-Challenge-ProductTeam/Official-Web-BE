@@ -16,11 +16,8 @@ public interface ProjectRepository extends JpaRepository<Project, Long> {
             "JOIN FETCH p.projectPlatforms pp " +
             "JOIN FETCH pp.platform " +
             "WHERE p.isReleased = true " +
-            "AND p.id < :cursor " +
             "ORDER BY p.id DESC ")
-    Slice<Project> findReleasedProjectsWithPlatform(
-            @Param("cursor") Long cursor,
-            Pageable pageable);
+    Slice<Project> findReleasedProjectsWithPlatform(Pageable pageable);
 
     @Query("SELECT DISTINCT p FROM Project p " +
             "JOIN p.projectPlatforms pp " +
@@ -28,13 +25,11 @@ public interface ProjectRepository extends JpaRepository<Project, Long> {
             "WHERE (:generation IS NULL OR p.generation = :generation) " +
             "AND (:platformName IS NULL OR pf.platformName = :platformName) " +
             "AND (:searchTerm IS NULL OR p.name LIKE %:searchTerm%) " +
-            "AND p.id < :cursor " +
             "ORDER BY p.id DESC")
     Slice<Project> findProjectsByGenerationAndPlatformNameWithPageable(
             @Param("generation") Integer generation,
             @Param("platformName") PlatformName platformName,
             @Param("searchTerm") String searchTerm,
-            @Param("cursor") Long cursor,
             Pageable pageable);
 
     @Query("SELECT DISTINCT p.generation FROM Project p ORDER BY p.generation")

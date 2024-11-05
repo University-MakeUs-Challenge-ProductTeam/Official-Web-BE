@@ -13,11 +13,9 @@ public interface CentralStaffRepository extends JpaRepository<CentralStaff, Long
 
     @Query("SELECT cs FROM CentralStaff cs " +
             "WHERE (:generation IS NULL OR cs.generation = :generation) " +
-            "AND (:cursor IS NULL OR cs.id > :cursor) " +
-            "ORDER BY cs.id ASC")
+            "ORDER BY cs.id ASC ")
     Slice<CentralStaff> findByGenerationWithPageable(
             @Param("generation") Integer generation,
-            @Param("cursor") Long cursor,
             Pageable pageable);
 
     @Query("SELECT DISTINCT cs.generation FROM CentralStaff cs ORDER BY cs.generation")
