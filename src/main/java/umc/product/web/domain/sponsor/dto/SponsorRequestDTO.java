@@ -28,8 +28,6 @@ public class SponsorRequestDTO {
         private String email;
         @Length(min = 1, max = 255)
         private String organizationName;
-        @Length(min = 1, max = 255)
-        private String logoImage;
         @Length(min = 1, max = 300)
         private String description;
         @Length(min = 1, max = 255)
