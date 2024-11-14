@@ -5,7 +5,7 @@ public enum EventType {
     SCHOOL_OT,
     CORE_DAY,
     UNION_NETWORKING_DAY,
-    IDEATHON,
+    PM_DAY,
     NEORDINARY_HACKATHON,
     UMC_HACKATHON,
     SCHOOL_HACKATHON,
