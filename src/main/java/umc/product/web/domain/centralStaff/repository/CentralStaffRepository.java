@@ -13,7 +13,14 @@ public interface CentralStaffRepository extends JpaRepository<CentralStaff, Long
 
     @Query("SELECT cs FROM CentralStaff cs " +
             "WHERE (:generation IS NULL OR cs.generation = :generation) " +
-            "ORDER BY cs.generation DESC, cs.id DESC ")
+            "ORDER BY cs.generation DESC, " +
+            "CASE " +
+            "   WHEN cs.role LIKE '%총괄%' THEN 1 " +
+            "   WHEN cs.role LIKE '%국장%' THEN 2 " +
+            "   WHEN cs.role LIKE '%파트장%' THEN 3 " +
+            "   ELSE 4 " +
+            "END, " +
+            "cs.id ASC")
     Page<CentralStaff> findByGenerationWithPageable(
             @Param("generation") Integer generation,
             Pageable pageable);
