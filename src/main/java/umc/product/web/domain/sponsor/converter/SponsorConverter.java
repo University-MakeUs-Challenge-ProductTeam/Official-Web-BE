@@ -54,7 +54,6 @@ public class SponsorConverter {
                 .applicationName(createRequestSponsorDTO.getApplicationName())
                 .description(createRequestSponsorDTO.getDescription())
                 .organizationName(createRequestSponsorDTO.getOrganizationName())
-                .logoImage(createRequestSponsorDTO.getLogoImage())
                 .build();
     }
 

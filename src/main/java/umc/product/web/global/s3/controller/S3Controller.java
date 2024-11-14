@@ -21,26 +21,26 @@ public class S3Controller {
 
     private final S3Service s3Service;
 
-    @Operation(summary = "파일 업로드용 presignedUrl 생성 요청", description = "파일 업로드를 위한 presignedUrl 생성을 요청하는 API 입니다.")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "COMMON200", description = "성공입니다.")
-    })
-    @PostMapping("/presigned/upload")
-    public BaseResponse<PresignedUrlToUploadResponse> getPresignedUrlToUpload(
-            @RequestBody GetPresignedUrlRequest request
-    ) {
-        return BaseResponse.onSuccess(s3Service.getPresignedUrlToUpload(request));
-    }
-
-    @Operation(summary = "파일 업로드용 presignedUrl 생성 요청 (여러 파일)", description = "여러 파일들에 대한 presignedUrl 생성을 요청하는 API 입니다.")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "COMMON200", description = "성공입니다.")
-    })
-    @PostMapping("/presigned/upload/files")
-    public BaseResponse<PresignedUrlListToUploadResponse> getPresignedUrListlToUpload(
-            @RequestBody GetPresignedUrlListRequest request
-    ) {
-        return BaseResponse.onSuccess(s3Service.getPresignedUrlListToUpload(request));
-    }
+//    @Operation(summary = "파일 업로드용 presignedUrl 생성 요청", description = "파일 업로드를 위한 presignedUrl 생성을 요청하는 API 입니다.")
+//    @ApiResponses(value = {
+//            @ApiResponse(responseCode = "COMMON200", description = "성공입니다.")
+//    })
+//    @PostMapping("/presigned/upload")
+//    public BaseResponse<PresignedUrlToUploadResponse> getPresignedUrlToUpload(
+//            @RequestBody GetPresignedUrlRequest request
+//    ) {
+//        return BaseResponse.onSuccess(s3Service.getPresignedUrlToUpload(request));
+//    }
+//
+//    @Operation(summary = "파일 업로드용 presignedUrl 생성 요청 (여러 파일)", description = "여러 파일들에 대한 presignedUrl 생성을 요청하는 API 입니다.")
+//    @ApiResponses(value = {
+//            @ApiResponse(responseCode = "COMMON200", description = "성공입니다.")
+//    })
+//    @PostMapping("/presigned/upload/files")
+//    public BaseResponse<PresignedUrlListToUploadResponse> getPresignedUrListlToUpload(
+//            @RequestBody GetPresignedUrlListRequest request
+//    ) {
+//        return BaseResponse.onSuccess(s3Service.getPresignedUrlListToUpload(request));
+//    }
 }
 
