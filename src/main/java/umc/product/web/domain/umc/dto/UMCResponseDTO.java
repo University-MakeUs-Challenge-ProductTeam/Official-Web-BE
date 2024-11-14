@@ -16,6 +16,7 @@ public class UMCResponseDTO {
     public static class CurrentParticipatingSchool {
         private Long participateSchoolId;
         private String schoolName;
+        private String logoImageUrl;
     }
 
     @Builder

@@ -21,6 +21,9 @@ public class RequirementSchool extends BaseEntity {
     @Column(name = "name", nullable = false)
     private String name;
 
+    @Column(name = "logo_image_url")
+    private String logoImageUrl;
+
     @Column(name = "instagram_account")
     private String instagramAccount;
 

@@ -18,7 +18,6 @@ import umc.product.web.domain.centralEvent.dto.CentralEventResponseDTO;
 import umc.product.web.domain.centralEvent.service.CentralEventService;
 import umc.product.web.global.common.BaseResponse;
 import umc.product.web.global.error.code.ErrorReasonDTO;
-import umc.product.web.global.error.code.status.ErrorStatus;
 
 @RestController
 @RequestMapping("/api/v1")
