@@ -11,6 +11,7 @@ public class UMCConverter {
         return UMCResponseDTO.CurrentParticipatingSchool.builder()
                 .participateSchoolId(requirementSchool.getId())
                 .schoolName(requirementSchool.getName())
+                .logoImageUrl(requirementSchool.getLogoImageUrl())
                 .build();
     }
 
