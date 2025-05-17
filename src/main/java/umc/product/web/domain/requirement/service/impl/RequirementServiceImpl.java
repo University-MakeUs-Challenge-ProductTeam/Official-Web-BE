@@ -28,7 +28,7 @@ public class RequirementServiceImpl implements RequirementQueryService {
     @Override
     public RequirementResponseDTO.RequirementInfoDTO getRequirementInfo(String name) {
 
-        RequirementSchool requirementSchool = requirementSchoolRepository.findByName(name).orElseThrow(()-> new RequirementHandler(ErrorStatus.REQUIREMENT_NOT_FOUND));
+        RequirementSchool requirementSchool = requirementSchoolRepository.findByNameAndDeletedAtIsNull(name).orElseThrow(()-> new RequirementHandler(ErrorStatus.REQUIREMENT_NOT_FOUND));
 
         List<RequirementPart> requirementPartList = requirementPartRepository.findByRequirementSchool(requirementSchool);
 
