@@ -5,6 +5,7 @@ import lombok.*;
 import umc.product.web.global.common.BaseEntity;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -47,4 +48,7 @@ public class RequirementSchool extends BaseEntity {
 
     @Column(name = "interview_end_date")
     private LocalDate interviewEndDate;
+
+    @Column(name = "deleted_at")
+    private LocalDateTime deletedAt;
 }

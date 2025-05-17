@@ -7,5 +7,5 @@ import java.util.Optional;
 
 public interface RequirementSchoolRepository extends JpaRepository<RequirementSchool, Long> {
 
-    Optional<RequirementSchool> findByName(String name);
+    Optional<RequirementSchool> findByNameAndDeletedAtIsNull(String name);
 }
