@@ -22,7 +22,7 @@ public class UMCQueryServiceImpl implements UMCQueryService {
 
     public UMCResponseDTO.GetCurrentParticipatingSchoolList getCurrentParticipatingSchoolList() {
 
-        List<RequirementSchool> requirementSchoolList = requirementSchoolRepository.findAll();
+        List<RequirementSchool> requirementSchoolList = requirementSchoolRepository.findAllByDeletedAtIsNull();
         return UMCConverter.toGetCurrentParticipatingSchoolList(requirementSchoolList);
     }
 }
